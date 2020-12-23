@@ -1,4 +1,3 @@
-//THIS LINE IS A TEST - Brie
 // In these exercises, you will be working on conditional statements,
 // namely the if / else if / else and switch/case conditionals.
 
@@ -53,11 +52,13 @@
 // "The value of num1 is <value here> and is greater than 10".
 
 function exercise1(num1) {
-  let answer1 = "";
+  let answer1 = "num1 is small";
   // ------------------------------------------
   // Write your code for exercise 1 below here:
   // ------------------------------------------
-
+  if (num1 > 10) {
+    answer1 = "The value of num1 is " + answer1 + " and is greater than 10";
+  }
   // ------------------------------------------
   // And above here
   // ------------------------------------------
@@ -80,6 +81,11 @@ function exercise2(num2) {
   // --------------------------------------------
   // Write your code for the exercise below here:
   // --------------------------------------------
+  if ((num2 % 2) == 0) {
+    answer2 = num2 + " is even";
+  } else if ((num2 % 3) == 0 || num2 == 1) {
+    answer2 = num2 + " is odd";
+  }
 
   // --------------------------------------------
   // And above here
@@ -102,7 +108,13 @@ function exercise3(num3) {
   // --------------------------------------------
   // Write your code for the exercise below here:
   // --------------------------------------------
-
+  if (num3 > 0) {
+    answer3 = num3 + " is positive";
+  } else if (num3 < 0) {
+    answer3 = num3 + " is negative";
+  } else if (num3 == 0) {
+    answer3 = num3 + " is zero";
+  }
   // --------------------------------------------
   // And above here
   // --------------------------------------------
@@ -121,7 +133,11 @@ function exercise4(varA, varB) {
   // --------------------------------------------
   // Write your code for the exercise below here:
   // --------------------------------------------
-
+  if (varA == varB) {
+    answer4 = "varA and varB are equal"
+  } else {
+    answer4 = "varA and varB differ"
+  }
   // --------------------------------------------
   // And above here
   // --------------------------------------------
@@ -134,6 +150,9 @@ function exercise4(varA, varB) {
 // seemed like they are equal, but would not pass the tests? In your analysis
 // consider other data types beside strings and variables.
 
+//undefined is not equal to the string "undefined", and NaN is not equal to the string "NaN"
+//even though 3 is equal to the string "3"
+//The same can be said about booleans. True does not equal "true", and false does not equal "false"
 
 // EXERCISE 6.
 // Here, assign the value of true to answer6 if:
@@ -144,7 +163,11 @@ function exercise6(varA, varB, varC) {
   // --------------------------------------------
   // Write your code for the exercise below here:
   // --------------------------------------------
-
+  if ((varA == varB) && (varA != varC) && (varB != varC)) {
+    answer6 = true;
+  } else {
+    answer6 = false;
+  }
   // --------------------------------------------
   // And above here
   // --------------------------------------------
@@ -152,7 +175,7 @@ function exercise6(varA, varB, varC) {
 }
 
 
-// EXERCISE 8.
+// EXERCISE 7.
 // Use a switch conditional statement with case clauses such that if `num7` is
 // a number and it has a value of 1 that `answer7` is assigned the string:
 // "You won!"
@@ -170,7 +193,18 @@ function exercise7(num7) {
   // --------------------------------------------
   // Write your code for the exercise below here:
   // --------------------------------------------
-
+  switch (num7) {
+    case 1:
+      answer7 = "You won!";
+    case 7:
+      answer7 = "You are lucky!";
+    case 101:
+      answer7 = "Welcome to coding 101!";
+    case 1000000:
+      answer7 = "You are one in a million!";
+    default:
+      answer7 = "Thanks for that!";
+  }
   // --------------------------------------------
   // And above here
   // --------------------------------------------
@@ -187,7 +221,11 @@ function exercise8(amount1, amount2, minimum, maximum) {
   // --------------------------------------------
   // Write your code for the exercise below here:
   // --------------------------------------------
-
+  if ((minimum <= amount1 <= maximum) && (minimum <= amount2 <= maximum)) {
+    answer8 = true;
+  } else {
+    answer8 = false;
+  }
   // --------------------------------------------
   // And above here
   // --------------------------------------------
@@ -206,7 +244,27 @@ function exercise9(item) {
   // --------------------------------------------
   // Write your code for the exercise below here:
   // --------------------------------------------
+  if ((typeof item) != 'number') {
+    answer9 = "Please send a number, that was a " + (typeof item) + ".";
+  } else {
+    switch (item) {
+      case 1:
+        answer9 = "You won!";
+        break;
+      case 7:
+        answer9 = "You are lucky!";
+        break;
+      case 101:
+        answer9 = "Welcome to coding 101!";
+        break;
+      case 1000000:
+        answer9 = "You are one in a million!";
+        break;
 
+      default:
+        answer9 = "Thanks for that!";
+    }
+  }
   // --------------------------------------------
   // And above here
   // --------------------------------------------
@@ -229,7 +287,15 @@ function exercise10(num10) {
   // --------------------------------------------
   // Write your code for the exercise below here:
   // --------------------------------------------
-
+  if ((num10 % 15) == 0) {
+    answer10 = "Fizz Buzz";
+  } else if ((num10 % 5) == 0) {
+    answer10 = "Buzz";
+  } else if ((num10 % 3) == 0) {
+    answer10 = "Fizz";
+  } else {
+    answer10 = num10;
+  }
   // --------------------------------------------
   // And above here
   // --------------------------------------------
@@ -239,6 +305,7 @@ function exercise10(num10) {
 // Congrats, you made it to the end! You rock!
 // Did you find this easy or hard? If you used references, which ones helped you? 
 // Please answer in a comment below.
-//
+//This wasn't too challenging since we learned these concepts during the workshops.
+//I was initially confused by exercise 10 but all it took was changing the order of the if statements. :]
 
 // Email your file to us or commit your file to GitHub and email us a link.
