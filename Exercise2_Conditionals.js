@@ -1,3 +1,4 @@
+//THIS LINE IS A TEST - Brie
 // In these exercises, you will be working on conditional statements,
 // namely the if / else if / else and switch/case conditionals.
 
