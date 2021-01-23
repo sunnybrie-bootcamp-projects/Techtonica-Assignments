@@ -1,0 +1,56 @@
+Part 3 - Questions - Please answer each question in one or a few sentences.
+
+1. How do you plan on exhibiting professionalism at Techtonica? What would be different in a full-time engineering job setting?
+I plan on being respectful, constructive, communicative, and considerate of others' time. One thing that would be different is there isn't really any guided learning in an actual job setting.
+
+2. What would you do if you just found out you are going to be an hour late tomorrow morning?
+Immediately contact those involved in the meeting to inform them, so they have as much time as possible to prepare.
+
+3. What would you do if you realized that you only had time to finish most of your work by the due date of a group project?
+Communicate with the rest of my team to work out solutions, and then communicate with my supervisor if more time is still needed.
+
+4. Knowing yourself, what are the most effective ways for you to learn and retain new information?
+I learn best with practice and testing out new concepts. I can't memorize every term immediately, but I can save resources so I know where to look when I'm stuck until I eventually do memorize them. Asking questions and watching demonstrations are also very helpful for me.
+
+5. What is growth mindset?
+A mindset focused on personal improvement, not comparing yourself to others or settling with "I can't."
+
+6. Which operating system are you using right now? Name two other popular operating systems.
+Mac OS - What I'm using right now.
+Windows
+Linux
+
+7. Why do computers need operating systems?
+They're the go-between for hardware and the applications we humans actually interact with.
+
+8. Explain what you would do if you felt stuck on a coding problem.
+Test other methods, then check my resources/references, then look it up online, and if all else fails, ask a fellow programmer.
+
+9. Describe the ways you plan on meeting and staying connected with new people in tech this month.
+I intend to attend workshops and study groups posted by Women Who Code, exchange information with people I meet, and follow up on LinkedIn and other social media. I also want to reach out to the connections I have to see if they can help me schedule informational interviews with professionals in the industry.
+
+10. Describe some examples of effective body language and what is communicated when they are used well.
+Posture is up, eyes looking at the person you're talking to, hands are relaxed and not fidgety or stiff. These things can communicate that you are listening attentively, are interested in the person you are speaking to and what they are saying, and your mind is present. It also exudes more confidence in your own abilities if you don't slouch. 
+
+11. Describe some examples of effective word choice and what is communicated when they are used well.
+"Thank you for your patience" rather than "I'm sorry for the wait." - Builds up a person and makes them feel appreciated rather than telling them that their time was wasted, which suggests they "lost."
+"What have you enjoyed about the meetup so far?" Rather than "Are you having a good time? - The latter is a yes/no answer that doesn't open the conversation, where the former is open-ended and lets you delve further in to the conversation.
+
+12. How can you build trust in a team?
+Communication, honesty, asking each other questions so that everyone can be involved.
+
+13. How are the devices on the internet physically connected to each other?
+Ethernet cables, fiber optic cables, and wifi/radio signals allow devices to connect with each other.
+
+14. How is information physically transmitted from device to device?
+Information is transmitted physically via light, electricity, and radio waves.
+
+15. How does one device find another it’s trying to communicate with?
+Every device has an IP address that allows it to be located. A device will ask the DNS server for an IP address, if DNS doesn't know already, DNS  will then ask the root server, which will direct it to the TLD name servers, which will then direct it to the autoritative name servers. It will then return the IP address to the original device.
+
+16. What methods do devices on the internet use to communicate?
+Internet Protocol (IP), User Datagram Protocol (UDP), Transmission Control Protocol (TCP)
+
+17. How can we send data reliably even if the network is unreliable?
+Routers have multiple paths to choose from when sending IP packets, and can adjust their route when needed.
+ Transmission Control Protocol (TCP) will then check to make sure every packet made it to the destination, and have the source resend any IP packets that didn't.
