@@ -1,0 +1,33 @@
+body {
+    background-color: #ffbf80;
+}
+
+
+img {
+    max-height: 50%;
+    max-width: 50%;
+}
+
+h1 {
+    font-family: gloss-drop, cursive;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 4em;
+    
+    text-align: center;
+}
+
+p {
+    font-family: grandma, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 1.25em;
+}
+
+#ingredients {
+    
+}
+
+#instructions {
+    
+}
