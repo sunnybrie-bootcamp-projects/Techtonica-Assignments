@@ -2,6 +2,9 @@ body {
     background-color: #ffbf80;
 }
 
+#wrapper {
+    max-width: 90%;
+}
 
 img {
     max-height: 50%;
