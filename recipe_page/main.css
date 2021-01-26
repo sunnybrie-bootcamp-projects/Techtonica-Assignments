@@ -1,14 +1,23 @@
 body {
-    background-color: #ffbf80;
+    background: url(images/vegetable-pattern.png) repeat center;
 }
 
 #wrapper {
-    max-width: 90%;
+    position: absolute;
+    box-sizing: border-box;
+    width: auto;
+    height: auto;
+    max-width: 95%;
+    margin: auto;
+    padding: 1em;
+    background-color: rgb(255, 191, 128, 0.9);
 }
 
-img {
-    max-height: 50%;
-    max-width: 50%;
+#hero {
+    max-height: 100%;
+    max-width: 100%;
+    border-radius: 1em 1em 1em;
+    box-shadow: rgba(0, 0, 0, .5) .5em .5em .5em;
 }
 
 h1 {
