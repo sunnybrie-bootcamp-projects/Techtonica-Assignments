@@ -2,21 +2,53 @@
     <head>
         <link rel="stylesheet" href="main.css">
         <link rel="stylesheet" href="https://use.typekit.net/xog2pem.css">
+         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <title>Ratatouille</title>
         <meta charset=“utf-8”>
     </head>
-
+<html>
     <body>
+        <!-- NAVBAR -->
+        <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+          <!-- Brand -->
+            <a class="navbar-brand" href="#">Navbar</a>
+
+          <!-- Toggler/collapsibe Button -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+        <!-- Navbar links -->
+            <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        
+        <!-- RECIPE -->
         <div id="wrapper">
-            <img id="hero" src="images/rata-prep1.JPG">
+            <div class="row">
+                <img id="hero" class="col" src="images/rata-prep1.JPG">
 
-            <header>
-                <h1>Ratatouille</h1>
+                <header class="col">
+                    <div id="recipetitle">Ratatouille</div>
 
-                <p>I was initially inspired to try this dish thanks to the Pixar movie making it look so pretty. My oh my, though, this dish actually tastes delicious! It's filling, cheap, vegetarian, and nutritious. Wins all around!</p></header>
+                    <p>I was initially inspired to try this dish thanks to the Pixar movie making it look so pretty. My oh my, though, this dish actually tastes delicious! It's filling, cheap, vegetarian, and nutritious. Wins all around!</p>
+                </header>
+            </div>
             
-            <div class="recipe">
-                <div id="ingredients">
+            <div class="row">
+                <!-- INGREDIENTS LIST -->
+                <div id="ingredients" class="col">
                     <ul>
                         <li> 1/2 onion, diced</li>
                         <li>5 cloves garlic, minced (Really, however much garlic you like. We know how it is.)</li>
@@ -36,9 +68,10 @@
                         <li>Extra-virgin olive oil</li>
                         <li>fresh basil (for garnish)</li>
                     </ul>
-                </div>
-            
-                <div id="instructions">
+    </div>
+
+                <!-- INSTRUCTIONS -->
+                <div id="instructions" class="col">
                     <ol>
                         <li>Preheat oven to 190C/375F.</li>
                         <li>Sautee onion, garlic,  and black pepper in olive oil until onions start to turn translucent. </li>
@@ -53,9 +86,15 @@
                         <li>Bake for 35-40 minutes until sauce is bubbly and vegetables are soft.</li>
                         <li>Garnish with basil, to make it extra pretty.</li>
                     </ol>
-                </div>
+    </div>
             </div>
-            
         </div>
     </body>
+ <!-- JAVASCRIPT SCRIPTS -->   
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    
 </html>

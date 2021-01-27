@@ -8,30 +8,38 @@ body {
 }
 
 #wrapper {
+    display: block;
     position: absolute;
     box-sizing: border-box;
+    margin: 1% 2.5%;
     width: auto;
     height: auto;
-    max-width: 95%;
-    margin: auto;
-    padding: 1em;
+    max-width: 95%; padding: 1em;
+    
     background-color: rgb(255, 191, 128, 0.95);
-}
-
-#hero {
-    max-height: 100%;
-    max-width: 100%;
+    
     border-radius: 1em 1em 1em;
     box-shadow: rgba(0, 0, 0, .5) .5em .5em .5em;
 }
 
-h1 {
+#hero {
+    display: block;
+    clip-path: url(images/tomato.svg);
+    
+    margin: auto;
+    max-height: 100%;
+    max-width: 80%;
+    
+    box-shadow: rgba(0, 0, 0, .5) .5em .5em .5em;
+}
+
+#recipetitle {
     margin: .5em auto .25em auto;
     
     font-family: gloss-drop, cursive;
     font-weight: 400;
     font-style: normal;
-    font-size: 4em;
+    font-size: 4.5em;
     
     line-height: 1em;
     text-align: center;
@@ -59,14 +67,9 @@ li {
     padding: .25em 0em;
 }
 
-.recipe {
-    
-}
-
 #ingredients {
     display: block;
     box-sizing: border-box;
-    float: left;
     max-width: 50%;
     padding 2em;
 } 
@@ -74,7 +77,24 @@ li {
 #instructions {
     display: block;
     box-sizing: border-box;
-    float: left;
     max-width: 50%;
     padding 2em;
+}
+
+@media only screen and (min-width: 600px) {
+    #hero {
+        max-width: 50%;
+    }
+    
+    #ingredients {
+        clear: left;
+        max-width: 60%;
+    }
+    
+    #recipe {
+        position: absolute;
+        top: auto;
+    }
+    
+    
 }
