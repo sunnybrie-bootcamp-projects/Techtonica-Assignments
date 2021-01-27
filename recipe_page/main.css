@@ -1,7 +1,7 @@
 body {
     background: url(images/vegetable-pattern.png) repeat center;
     
-    font-family: monarcha, serif;
+    font-family: 'monarcha', serif;
     font-weight: 400;
     font-style: normal;
     color: darkslategray;
@@ -14,35 +14,48 @@ body {
     margin: 1% 2.5%;
     width: auto;
     height: auto;
-    max-width: 95%; padding: 1em;
+    max-width: 95%; 
+    padding: 1em;
     
-    background-color: rgb(255, 191, 128, 0.95);
+    background-color: rgb(255, 229, 204, 0.95);
     
     border-radius: 1em 1em 1em;
     box-shadow: rgba(0, 0, 0, .5) .5em .5em .5em;
 }
 
+
 #hero {
     display: block;
-    clip-path: url(images/tomato.svg);
-    
+    padding: 0px;
     margin: auto;
     max-height: 100%;
-    max-width: 80%;
+    max-width: 75%;
+    border-radius: 1em 1em 1em;
     
-    box-shadow: rgba(0, 0, 0, .5) .5em .5em .5em;
+    box-shadow:rgba(0, 0, 0, .5) .25em .25em .5em;
+
 }
 
 #recipetitle {
     margin: .5em auto .25em auto;
+    height: 1em;
+    max-width: 90%;
     
     font-family: gloss-drop, cursive;
     font-weight: 400;
     font-style: normal;
-    font-size: 4.5em;
+    font-size: 5em;
     
     line-height: 1em;
     text-align: center;
+
+    -webkit-text-fill-color: transparent;
+    background: url(images/finished.png);
+    -webkit-background-clip: text;
+    background-size: cover;
+    background-position: center;
+    filter: drop-shadow(.025em .025em .02em rgba(0, 0 , 0, .5));
+
 }
 
 p {
@@ -63,6 +76,22 @@ ol {
     align-content: space-between;
 }
 
+ul {
+    font-family: 'monarcha', serif;
+    font-weight: 400;
+    font-style: normal;
+    color: darkslategray;
+    font-size: .8em;
+}
+
+ol {
+    font-family: 'monarcha', serif;
+    font-weight: 400;
+    font-style: normal;
+    color: darkslategray;
+    font-size: 1em;
+}
+
 li {
     padding: .25em 0em;
 }
@@ -70,31 +99,27 @@ li {
 #ingredients {
     display: block;
     box-sizing: border-box;
-    max-width: 50%;
-    padding 2em;
+    padding .2em;
+    
+
+    
+    
 } 
 
 #instructions {
     display: block;
     box-sizing: border-box;
-    max-width: 50%;
-    padding 2em;
 }
 
 @media only screen and (min-width: 600px) {
+
     #hero {
-        max-width: 50%;
+        
+        
     }
     
-    #ingredients {
-        clear: left;
-        max-width: 60%;
+    #desc {
+        
     }
-    
-    #recipe {
-        position: absolute;
-        top: auto;
-    }
-    
-    
+
 }
