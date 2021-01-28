@@ -17,7 +17,7 @@ body {
     max-width: 95%; 
     padding: 1em;
     
-    background-color: rgb(255, 229, 204, 0.95);
+    background-color: rgb(255, 245, 204, 0.95);
     
     border-radius: 1em 1em 1em;
     box-shadow: rgba(0, 0, 0, .5) .5em .5em .5em;
@@ -44,7 +44,7 @@ body {
     font-family: gloss-drop, cursive;
     font-weight: 400;
     font-style: normal;
-    font-size: 5em;
+    font-size: 5.25em;
     
     line-height: 1em;
     text-align: center;
@@ -55,10 +55,34 @@ body {
     background-size: cover;
     background-position: center;
     filter: drop-shadow(.025em .025em .02em rgba(0, 0 , 0, .5));
-
 }
 
-p {
+#subhead {
+    font-family: gloss-drop, cursive;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 2em;
+    
+    color: olive;
+    
+    text-align: center;
+    
+    text-shadow: rgba(0, 0, 0, .5) .02em .02em .1em;
+}
+
+#ingredients {
+    display: block;
+    box-sizing: border-box;
+    padding .2em;
+    
+} 
+
+#instructions {
+    display: block;
+    box-sizing: border-box;
+}
+
+#desc p {
     margin: auto;
     max-width: 75%;
     
@@ -68,6 +92,8 @@ p {
     font-size: 1.45em;
     
     text-align: center;
+    
+    color: darkslategrey;
 }
 
 ul,
@@ -78,10 +104,14 @@ ol {
 
 ul {
     font-family: 'monarcha', serif;
-    font-weight: 400;
+    font-weight: 600;
     font-style: normal;
     color: darkslategray;
     font-size: .8em;
+}
+
+ul i{
+    font-weight: 300;
 }
 
 ol {
@@ -96,19 +126,13 @@ li {
     padding: .25em 0em;
 }
 
-#ingredients {
-    display: block;
-    box-sizing: border-box;
-    padding .2em;
+li action {
+    font-family: grandma, sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 1.45em;
     
-
-    
-    
-} 
-
-#instructions {
-    display: block;
-    box-sizing: border-box;
+    color: darkred;
 }
 
 @media only screen and (min-width: 600px) {
