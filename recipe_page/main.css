@@ -26,14 +26,19 @@ body {
 
 #hero {
     display: block;
-    padding: 0px;
     margin: auto;
-    max-height: 100%;
-    max-width: 75%;
-    border-radius: 1em 1em 1em;
+    max-height: 20em;
+    max-width: 95%;
+    overflow: hidden;
+
     
     box-shadow:rgba(0, 0, 0, .5) .25em .25em .5em;
 
+}
+
+#hero img{
+    max-width: 100%;
+    height: 20em;
 }
 
 #recipetitle {
@@ -138,7 +143,8 @@ li action {
 @media only screen and (min-width: 600px) {
 
     #hero {
-        
+       left: 2em;
+        max-width: 50%;
         
     }
     
