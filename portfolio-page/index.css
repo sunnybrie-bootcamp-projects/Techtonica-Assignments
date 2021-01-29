@@ -1,0 +1,17 @@
+#gallery {
+    display: block;
+    margin: auto;
+    
+}
+
+.card-columns {
+    margin: auto;
+    justify-content: space-between;
+    align-content: space-between;
+}
+
+.card {
+    margin: auto;
+    
+    box-shadow: .5em .5em .5em rgba(0, 0, 0, .5);
+}
