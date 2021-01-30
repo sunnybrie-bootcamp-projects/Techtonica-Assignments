@@ -20,13 +20,11 @@
 <html>
   
 <!-- NAV -->    
-<nav class="navbar navbar-expand-md bg-dark navbar-dark sticky-top">
-  <!-- Brand -->
-  <a class="navbar-brand" href="#"><img src="graphics/icon-sunflower.png"></a>
+<nav class="navbar navbar-expand-md sticky-top">
 
   <!-- Toggler/collapsibe Button -->
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-    <span class="navbar-toggler-icon"></span>
+    <img src="graphics/icon-sunflower.png">
   </button>
 
   <!-- Navbar links -->
@@ -57,7 +55,114 @@
         
         <!-- PORTFOLIO GALLERY -->
         <div id="gallery" class="container-l p-1">
-            <!-- WEB DESIGN -->
+            
+            <div id="website-gall" class="projectsect">
+
+                <h2 class="gall-label">Websites</h2>
+       
+                
+            <!-- Red Haired Girl -->
+                <div id="web1" class="project" data-toggle="modal" data-target="#image1" style="background-image: url(graphics/Placeholders/RedHairFlowers.png)">
+
+                    <!-- The Modal -->
+                    <div class="modal fade" id="image1">
+                      <div class="modal-dialog modal-dialog-centered modal-lg">
+                        <div class="modal-content">
+                            <img class="img-fluid" src="graphics/Placeholders/RedHairFlowers.png" alt="Red Haired Girl">
+                            <div class ="projectdesc">
+                                <h4>[TITLE HERE]</h4>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eu vulputate ipsum. Donec rhoncus justo rutrum aliquet blandit. Donec egestas ultricies odio, at consectetur mi sollicitudin ut. Nullam justo risus, convallis vel ante sit amet, tempor bibendum leo. </p>
+                            </div>
+
+                        </div>
+                      </div>
+                    </div>
+                </div>
+
+            <!-- Child Portrait -->
+                <div id="web2" class="project" data-toggle="modal" data-target="#image2" style="background-image: url(graphics/Placeholders/OzPortrait.jpg)">
+                    <!-- The Modal -->
+                    <div class="modal fade" id="image2">
+                      <div class="modal-dialog modal-dialog-centered modal-lg">
+                        <div class="modal-content">
+                            <img class="img-fluid" src="graphics/Placeholders/OzPortrait.jpg" alt="Portrait of small child in a bath with bubbles on his head.">
+                        </div>
+                      </div>
+                    </div>
+                </div>
+
+            <!-- Senior Portrait -->
+                 <div id="web3" class="project" data-toggle="modal" data-target="#image3" style="background-image: url(graphics/Placeholders/DavidPortrait.jpg)">
+                    <!-- The Modal -->
+                    <div class="modal fade" id="image3">
+                      <div class="modal-dialog modal-dialog-centered modal-lg">
+                        <div class="modal-content">
+                            <img class="img-fluid" src="graphics/Placeholders/DavidPortrait.jpg" alt="Portrait of a senior man.">
+                        </div>
+                      </div>
+                     </div>
+                </div>
+
+            <!-- Woman in Red -->
+                 <div id="web4" class="project" data-toggle="modal" data-target="#image4"style="background-image: url(graphics/Placeholders/Clothes1.jpg)">
+                    <!-- The Modal -->
+                    <div class="modal fade" id="image4">
+                      <div class="modal-dialog modal-dialog-centered modal-lg">
+                        <div class="modal-content">
+                            <img class="img-fluid" src="graphics/Placeholders/Clothes1.jpg" alt="Full body portrait of a reclined woman in a red dress.">
+                        </div>
+                      </div>
+                     </div>
+                    </div>  
+
+            </div>
+            
+            <div id="app-gall" class="projectsect">
+
+                <h2 class="gall-label">Apps</h2>
+                
+            <!-- Cats -->
+                 <div id="app1" class="project" data-toggle="modal" data-target="#image5"style="background-image: url(graphics/Placeholders/TwinCats.JPG)">
+                    <!-- The Modal -->
+                    <div class="modal fade" id="image5">
+                      <div class="modal-dialog modal-dialog-centered modal-lg">
+                        <div class="modal-content">
+                            <img class="img-fluid" src="graphics/Placeholders/TwinCats.JPG" alt="Portrait of two calico cats, with one upside down.">
+                        </div>
+                      </div>
+                     </div>
+                </div>                                
+            <!-- Self Portrait -->
+                 <div id="app2" class="project" data-toggle="modal" data-target="#image6" style="background-image: url(graphics/Placeholders/SelfPortraitFall.JPG)">
+
+                    <!-- The Modal -->
+                    <div class="modal fade" id="image6">
+                      <div class="modal-dialog modal-dialog-centered modal-lg">
+                        <div class="modal-content">
+                            <img class="img-fluid" src="graphics/Placeholders/SelfPortraitFall.JPG" alt="Self Portrait of Brie Klassen, done in the fall semester of 2020.">
+                        </div>
+                      </div>
+                     </div>
+                </div>
+
+            <!-- Blue Macaw -->
+                 <div id="app3" class="project" data-toggle="modal" data-target="#image13" style="background-image: url(graphics/Placeholders/BlueMacawPortrait.JPG)">
+
+                    <!-- The Modal -->
+                    <div class="modal fade" id="image13">
+                      <div class="modal-dialog modal-dialog-centered modal-lg">
+                        <div class="modal-content">
+                            <img class="img-fluid" src="graphics/Placeholders/BlueMacawPortrait.JPG" alt="Portrait of a blue and gold macaw.">
+                        </div>
+                      </div>
+                     </div>
+                </div>
+                
+            </div>
+            
+ <!-- ORIGINAL GALLERY -->           
+            <!--
+            <!- WEB DESIGN ->
             <h2>Websites</h2>
             <div class="card-columns">
                 <div class="card">
@@ -97,8 +202,7 @@
                 
             </div>
             
-            
-            <!-- APPS -->
+            <!- APPS ->
             <h2>Apps</h2>
             <div class="card-columns">
                 <div class="card">
@@ -129,7 +233,8 @@
                     </div>
                 </div>
                 
-            </div>
+            </div> -->
+            
         </div>
         
         
@@ -137,18 +242,17 @@
         <div id="about">
             <img id="profilepic" src="graphics/temp-profilepic.jpg" >
             
+            <pagetitle>About Me</pagetitle>
+            
             <div id="profiletext">
-                <pagetitle>About Me</pagetitle>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eu vulputate ipsum. Donec rhoncus justo rutrum aliquet blandit. Donec egestas ultricies odio, at consectetur mi sollicitudin ut. Nullam justo risus, convallis vel ante sit amet, tempor bibendum leo. Pellentesque fringilla, urna eu vehicula sodales, libero velit posuere erat, a porttitor nunc quam at magna. Cras eu accumsan ligula. Nunc rutrum, urna hendrerit sodales placerat, urna velit aliquam dolor, at blandit ipsum enim volutpat orci.</p>
-
-                <p>sollicitudin nulla nulla vel nisl. Etiam aliquet ultricies sodales. In porttitor mi quam, nec porta metus rutrum ac. Vestibulum quis eros quis velit aliquet feugiat ut quis purus. Aenean massa mauris, blandit eu ante sed, luctus iaculis tortor. Integer eu orci nisl. Maecenas commodo dui vitae diam commodo dignissim. Phasellus nunc nisl, gravida quis felis quis, faucibus ornare velit.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eu vulputate ipsum. Donec rhoncus justo rutrum aliquet blandit. Donec egestas ultricies odio, at consectetur mi sollicitudin ut. Nullam justo risus, convallis vel ante sit amet, tempor bibendum leo. Pellentesque fringilla, urna eu vehicula sodales, libero velit posuere erat, a porttitor nunc quam at magna. Cras eu accumsan ligula. Nunc rutrum, urna hendrerit sodales placerat, urna velit aliquam dolor, at blandit ipsum enim volutpat orci.<br> <br>sollicitudin nulla nulla vel nisl. Etiam aliquet ultricies sodales. In porttitor mi quam, nec porta metus rutrum ac. Vestibulum quis eros quis velit aliquet feugiat ut quis purus. Aenean massa mauris, blandit eu ante sed, luctus iaculis tortor. Integer eu orci nisl. Maecenas commodo dui vitae diam commodo dignissim. Phasellus nunc nisl, gravida quis felis quis, faucibus ornare velit.</p>
             </div>
         </div>
         
         <!-- CONTACT -->
-    <pagetitle>Contact</pagetitle>       
+         
     <div id="contact" class="container-fluid">
-        
+        <pagetitle>Contact</pagetitle>      
         <form action="/action_page.php">
             
             <div class="form-group pt-3">

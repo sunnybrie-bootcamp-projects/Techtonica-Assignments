@@ -1,3 +1,13 @@
+/* COLOR CODES */
+
+.COLORSTORE {
+    color: #0388A6; /* Tealy */
+    color: #5ED4B8; /* Seafoamy */
+    color: #F26671; /* Warm Pink */
+    color: #F97BC1; /* Bubble Pink */
+    color: #F2C12E; /* Daisy Yellow */
+}
+
 html {
     background-color: darkslategray;
     -webkit-font-smoothing: antialiased;
@@ -25,31 +35,7 @@ html {
 body {
     max-width: 100%;
 
-    background-color: rgba(54, 54, 54, 1);
-}
-
-.navbar-brand img {
-    max-width: 2.5em;
-}
-
-#wrapper {
-    display: block;
-    box-sizing: border-box;
-    max-width: 90%;
-    margin: auto;
-    padding: 1em;
-    
-    border-style: dotted;
-    border-width: 1px;
-    
-    background-color: #32948F;
-    box-shadow: 0 .5em 1em rgba(0, 0, 0, .5);
-}
-
-#header {
-    display: block;
-    box-sizing: border-box;
-    margin: auto;
+    background-color: rgb(38, 38, 38);
 }
 
 pagetitle {
@@ -70,9 +56,153 @@ h2 {
     font-style: normal;
 }
 
+/* NAV SECTION */
+.navbar {
+    background: #F26671;
+}
+
+.navbar-brand img {
+    max-width: 2.5em;
+}
+
+/* MAIN SECTION */
+#wrapper {
+    display: block;
+    box-sizing: border-box;
+    max-width: 90%;
+    margin: auto;
+    padding: 1em;
+    
+    border-style: dotted;
+    border-width: 1px;
+    
+    background-color: rgb(75, 75, 75);
+    box-shadow: 0 .5em 1em rgba(0, 0, 0, .5);
+}
+
+/* HEADER */
+#header {
+    display: block;
+    box-sizing: border-box;
+    margin: auto;
+}
+
+/* PROJECTS */
+#gallery {
+    display: grid;
+    box-sizing: border-box;
+    padding-top: 1em;
+    margin: 0 auto auto 0;
+    height: auto;
+    
+    grid-template-areas: 'webGall' 'appGall';
+    grid-gap: 1em;
+}
+
+.projectsect {
+    display: grid;
+    box-sizing: border-box;
+    padding-top: 1em;
+    margin: 0 auto auto 0;
+    width: 100%;
+    height: auto;
+    
+
+    grid-template-rows: auto auto auto auto;
+    grid-template-columns: auto 50% auto;
+    grid-gap: 1em;
+    justify-content: space-between;
+    align-content: space-between;
+    
+}
+
+#website-gall {
+    grid-column: 1;
+    grid-row: 1;
+}
+
+#app-gall {
+    grid-column: 1;
+    grid-row: 2;
+}
+
+/* PROJECT ITEMS' GRID PLACEMENT */
+.gall-label {
+    grid-column: 1 / span 2;
+    grid-row: 1;
+}
+#app1 {
+    grid-column: 2 / span 2;
+    grid-row: 2;
+}
+#app2 {
+    grid-column: 1 / span 2;
+    grid-row: 3;
+}
+#app3 {
+    grid-column: 2 / span 2;
+    grid-row: 4;
+}
+#web1 {
+    grid-column: 2 / span 2;
+    grid-row: 2;
+}
+#web2 {
+    grid-column: 1 / span 2;
+    grid-row: 3;
+}
+#web3 {
+    grid-column: 2 / span 2;
+    grid-row: 4;
+}
+#web4 {
+    grid-column: 1 / span 2;
+    grid-row: 5;
+}
+
+.project{
+    box-sizing: border-box;
+    margin: auto;
+    min-height: 20em;
+    min-width: 100%;
+    
+    background-clip: border-box;
+    background-position: center;
+    background-size: 200%;
+    
+    box-shadow: .25em .25em .5em black;
+}
+
+.projectdesc {
+    
+}
+
+/* ORIGINAL PROJECTS */
+/*
+#gallery {
+    display: block;
+    margin: auto;
+    
+}
+
+.card-columns {
+    margin: auto;
+    justify-content: space-between;
+    align-content: space-between;
+}
+
+.card {
+    margin: auto;
+    
+    box-shadow: .5em .5em .5em rgba(0, 0, 0, .5);
+}
+*/
+
+/* ABOUT ME */
 #about {
     display: block;
 }
+
 #profilepic {
     display: block;
     max-width: 500px;
@@ -81,10 +211,13 @@ h2 {
     clip-path: circle(40%);
 }
 
+
+/* CONTACT ME */
 #contact {
     max-width: 70%;
 }
 
+/* FOOTER */
 .soc-button {
     margin: auto;
 }
@@ -105,24 +238,63 @@ h2 {
     box-shadow: 0 .5em 1em rgba(0, 0, 0, .5);
 }
 
-@media screen(min-width: 700px){
+/* DESKTOP */
+
+@media (min-width: 700px){
+    pagetitle {
+        font-size: 3em;
+    }
+    
+    #wrapper {
+        display: grid;
+        
+        grid-template-columns: auto  45%;
+        grid-template-rows: 20% auto auto;
+    }
+    
+    #gallery {
+        grid-column: 1;
+        grid-row: 1 / span 3;
+    }
+    
     
     #about {
+        grid-column: 2;
+        grid-row: 1;
+        
         display: grid;
-        grid-column-gap: 1em;
-        grid-template-columns: auto auto;
-        grid-template-rows: auto;
+        grid-column-gap: .5em;
+        grid-template-columns: 45% 55%;
+        grid-template-rows: 25% auto;
         justify-content: space-around;
     }
+    
     #profilepic {
         box-sizing: border-box;
-        float: left;
-        
         grid-column: 1;
+        grid-row: 2;
+        max-width: 100%;
+        
+        
+        transform: scale(.5);
     }
     
-    #profiletext {
+    #about pagetitle {
+        grid-column: 1/ span 2;
+        grid-row: 1;
+        max-height: 500px;
+    }
+    
+    #profiletext{
         grid-column: 2;
+        grid-row: 2;
+        max-width: 80%;
+        max-height: 100%;
+        overflow-y: scroll;
     }
     
+    #contact {
+        grid-column: 2;
+        grid-row: 2;
+    }
 }
