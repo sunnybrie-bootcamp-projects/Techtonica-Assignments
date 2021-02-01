@@ -252,11 +252,32 @@ h2 {
         grid-template-rows: 20% auto auto;
     }
     
-    #gallery {
-        grid-column: 1;
-        grid-row: 1 / span 3;
+    #gallery pagetitle {
+        grid-area: title;
     }
     
+    #gallery {
+        min-width: 100%;
+        grid-column: 1;
+        grid-row: 1 / span 3;
+        
+        grid-template-columns: auto;
+        grid-template-rows: auto auto;
+        grid-template-areas: 'title' 'webGall' 'appGall';
+        grid-gap: 1em;
+    }
+    
+    #website-gall {
+        grid-row: 2;ß
+    }
+    
+    #app-gall {
+        grid-row: 3; 
+    }
+    
+    .project {
+        min-height: 10vw;
+    }
     
     #about {
         grid-column: 2;
