@@ -12,34 +12,20 @@
 
 function movieNight(arr){
   let result = [];
-  arr.forEach(person => {
-    //if David goes, Alex will go
-    if(person === "David"){
-        result.push("David","Alex");
-      //console.log(result); //-TEST
+  
+  function movieNight(arr){
+    let result = [];
+    if(arr.includes("David")){
+      result.push("David","Alex");
+    }else{
+      result.push("Ming", "Priya");
     }
-    //if Ming goes, Priya will go and vice versa:
-    if(person === "Ming" || person === "Priya"){
-      //if Ming and Priya are not in array already, add them both
-      if(result.indexOf("Ming") === -1 && result.indexOf("Priya") === -1){
-        result.push("Ming", "Priya");
-      }
+    if(result.length >= 2){
+      result.push("Breanna");
     }
-  });
-  //console.log(result);
-  // Breanna will go only if there are at least 2 others going
-  if(result.length >= 2){
-    result.push("Breanna");
-    //console.log(result); //-TEST
-  }
-   //if David goes, Ming and Priya will not attend
-  if(result.includes("David")){ //Check result for David
-    if(result.indexOf("Ming") !== -1 && result.indexOf("Priya") !== -1){ //Check result for Ming or Priya
-      result.splice(result.indexOf("Ming"), 1); //Removes Ming, if present
-      result.splice(result.indexOf("Priya"), 1); //Removes Priya, if present
-    }
-    // console.log(result); //-TEST
-  }
+    console.log(result);
+    return result;
+}
   console.log(result);
   return result; 
 }
