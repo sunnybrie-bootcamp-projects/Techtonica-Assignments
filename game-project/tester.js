@@ -55,7 +55,9 @@ function setBoard(){
 
 //Tracks pressed letters
 function selectLetter(){
-
+    console.log(`CELL:  
+            ${this}`);
+            console.log(this);
     switch(this.className){
         //If selected letter is already used
         case "selected":
@@ -81,11 +83,10 @@ function selectLetter(){
 
             this.className = "recent"; //update to class recent
             if(recent.length > 0){
-                selectedList.push(recent); //add previously used to used list
-                recent.push(this); //add this letter to last used
-                recent.shift(); //remove previously used letter
+                selectedList.push(recent.shift()); //add previously used to used list
+                recent.push(this.id); //add this letter to last used
             }else{
-                recent.push(this); //add this letter to recent
+                recent.push(this.id); //add this letter to recent
             };
             
             currentWord += this.textContent; //add this letter to current word
@@ -105,7 +106,7 @@ function selectLetter(){
             this.className = "unselected"; //revert this letter's class to unselected
             recent.push(selectedList.pop()); //pop off previously used letter from used list and add to last used
             recent.shift(); //remove this letter from last used
-    
+            document.getElementById(recent[0]).className = "recent";
             break;
             
         default:
@@ -130,7 +131,7 @@ function printUsedList() {
 
 function updateUsedList() {
     for(let i = 0; i < selectedList.length; i++){
-        selectedList[i].className = "selected";
+        document.getElementById(selectedList[i]).className = "selected";
     };
 };
 
