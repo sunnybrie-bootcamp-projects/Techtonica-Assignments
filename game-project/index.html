@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<head>
+     
+    <!-- CSS STYLESHEET -->
+    <link rel="stylesheet" href="style.css">
+    
+    <script type="text/javascript" src="tester.js"></script>
+    
+    <meta charset=“utf-8”>
+    
+    <title>Brie's Boggle</title>
+</head>
+
+
+<html lang="en">
+<body>
+    <!-- HEADER -->
+    <div class="header">
+        <h1>Brieggle</h1>
+        <button id="startgame" onclick="setBoard(); disappear()">Start Game</button>
+    </div>
+    
+    <div class="wrapper">
+        <!-- BOGGLE GAME BOARD -->
+        <table id="gameboard">
+
+        </table>
+
+        <div class="gameInfo">
+            <h2>Words Found:</h2>
+            <ul id="played-words"> </ul>
+            <h2>Current Score:</h2>
+            <div id="total-score"></div>
+        </div>
+
+        <div class="currentFind">
+            <h2 id="word-build"> </h2>
+            <button onclick="submitWord(); refreshLetters()">Check</button>
+        </div>
+    </div>
+    
+<script>
+    function disappear(){
+        document.getElementById("startgame").style= "display:none";
+    }
+</script>
+</body>
+    
+</html>
