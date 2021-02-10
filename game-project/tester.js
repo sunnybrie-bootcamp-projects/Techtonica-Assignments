@@ -51,7 +51,18 @@ function setBoard(){
     gameMatrix = generateBoggleGame(); //-TEST
 };
 
+//Resets letter classes
+function refreshLetters() {
+    var clickedLetters = (document.getElementsByClassName("selected"));
+    while(0 < clickedLetters.length){
+        clickedLetters[0].className = "unselected";
+    };
+};
 
+function resetRecent() {
+    document.getElementById(recent[0]).className = "unselected";
+    recent = [];
+};
 
 //Tracks pressed letters
 function selectLetter(){
@@ -123,15 +134,20 @@ function selectLetter(){
     updateWIP();
 };
 
-function printUsedList() {
-    for(let i = 0; i < selectedList.length; i++){
-        console.log(selectedList[i]);
-    };
-};
-
 function updateUsedList() {
     for(let i = 0; i < selectedList.length; i++){
         document.getElementById(selectedList[i]).className = "selected";
+    };
+};
+
+function updateWIP(){
+    document.getElementById("word-build").textContent = currentWord;
+};
+
+//Tester Function
+function printUsedList() {
+    for(let i = 0; i < selectedList.length; i++){
+        console.log(selectedList[i]);
     };
 };
 
@@ -139,9 +155,7 @@ function alreadySelected(){
     this.style = "background-color: red";
 };
 
-function updateWIP(){
-    document.getElementById("word-build").textContent = currentWord;
-};
+
 
 //Submit current word
 function submitWord(){
@@ -164,12 +178,4 @@ function updatePlayedWords() {
 function updateScore() {
     currentScore += currentWord.length; //Add score
     document.getElementById("total-score").innerHTML = currentScore;
-}
-
-function refreshLetters(){
-    var clickedLetters = (document.getElementsByClassName("selected"));
-    let i = 0;
-    while(i < clickedLetters.length){
-        clickedLetters[i].className = "unselected";
-    };
 };
