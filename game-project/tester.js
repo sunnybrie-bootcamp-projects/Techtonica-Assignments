@@ -27,6 +27,9 @@ const validStartValue = [
     "cell-3-2",
     "cell-3-3",
 ]; //Valid moves (ID's)
+var moveCounter = 1;
+
+// ------ STARTING GAME --------
 
 //Creates Game Board Table
 function setBoard(){
@@ -73,30 +76,12 @@ function setBoard(){
     gameMatrix = generateBoggleGame(); //-TEST
 };
 
-//Resets letter classes
-function refreshLetters() {
-    selectedList = [];
-    let counter = 0;
-    while(counter < 16){
-        document.getElementsByTagName("td")[counter].className = "unselected";
-        counter++;;
-    };
-};
-
-function resetRecent() {
-    console.log("Clearing Recent Selection..."); //-TEST
-    console.log("Before: "); //-TEST
-    console.log(recent); //-TEST
-
-    document.getElementById(`${recent[0]}`).className = "unselected";
-    recent = [];
-
-    console.log("After: "); //-TEST
-    console.log(recent); //-TEST
-};
+// ------ MOVES --------
 
 //Tracks pressed letters
 function selectLetter(){
+console.log(`--- MOVE #${moveCounter} ---`); //-TEST 
+moveCounter++; //-TEST
   console.log(`CELL:  
             ${this}`); //TEST
   console.log(this); //TEST
@@ -131,9 +116,9 @@ function selectLetter(){
       this.className = "recent"; //update to class recent
       if (recent.length > 0) {
         selectedList.push(recent.shift()); //add previously used to used list
-        recent.push(this.id); //add this letter to last used
+        recent.push(this.id); //add this letter's id to last used
       } else {
-        recent.push(this.id); //add this letter to recent
+        recent.push(this.id); //add this letter's id to recent
       }
 
       currentWord += this.textContent; //add this letter to current word
@@ -174,38 +159,115 @@ function selectLetter(){
     validOptions();
 };
 
+//Updates list of selected letters
 function updateUsedList() {
     for(let i = 0; i < selectedList.length; i++){
         document.getElementById(selectedList[i]).className = "selected";
     };
 };
 
+//Tracks and displays word in progress
 function updateWIP(){
     document.getElementById("word-build").textContent = currentWord;
 };
 
+// ------ WORD SUBMISSION --------
+
+//Submit current word
+function submitWord() {
+  console.log("--- SUBMIT WORD ---"); //-TEST
+  console.log("Submitting word and resetting board..."); //-TEST
+
+  resetRecent();
+  resetValidStart();
+  refreshLetters();
+  updatePlayedWords();
+  updateScore();
+
+  currentWord = ""; //reset current word
+
+  document.getElementById("word-build").innerHTML = "";
+};
+
+//Updates game info
+function updatePlayedWords() {
+    playedWords.push(currentWord); //Add current word to played words
+    //Adding to HTML list
+    var listWord = document.createElement("LI");
+    var listWordContent = document.createTextNode(currentWord);
+    listWord.appendChild(listWordContent);
+    document.getElementById("played-words").appendChild(listWord);
+};
+
+function updateScore() {
+    currentScore += currentWord.length; //Add score
+    document.getElementById("total-score").innerHTML = currentScore;
+};
+
+// ------ RESETS DICE AFTER WORD SUBMISSION --------
+
+//Resets letter classes
+function refreshLetters() {
+    selectedList = [];
+    let counter = 0;
+    while(counter < 16){
+        document.getElementsByTagName("td")[counter].className = "unselected";
+        counter++;;
+    };
+};
+
+//Clears recent selection
+function resetRecent() {
+    console.log("Clearing Recent Selection..."); //-TEST
+    console.log("Before: "); //-TEST
+    console.log(recent); //-TEST
+
+    if(recent.length >= 1){
+        document.getElementById(`${recent[0]}`).className = "unselected";
+        recent = [];
+    };
+
+    console.log("After: "); //-TEST
+    console.log(recent); //-TEST
+};
+
+// ------ VALID OPTIONS AFTER MOVE --------
+
 //Resets valids after word submission
 function resetValidStart(){
-            console.log("Clear Valids...");
-            
-            valid = validStartValue;
+            console.log("Resetting All Valids...");
+            valid.splice(0, valid.length);
+            console.log(valid);
 
-            while (valid.length >= 1) {
-              document.getElementById(`${valid[0]}`).title = "validOption";
-              valid.shift();
-            }
+            let counter = (validStartValue.length - 1);
+            while (counter >= 0) {
+                document.getElementById(`${validStartValue[counter]}`).title = "validOption";
+
+                console.log(
+                  document.getElementById(`${validStartValue[counter]}`)
+                ); //-TEST
+
+                counter--;
+            };
 };
 
 //Reset valid options after move
 function resetValid(){
-        console.log("Resetting Valids...");
-        console.log("Before:");
-        console.log(valid);
+        console.log("Clearing Previous Valids..."); //TEST
+        console.log("Before:"); //TEST
+        console.log(valid); //TEST
 
-        while(valid.length >= 1){
-            document.getElementById(`${valid[0]}`).title = "invalid";
-            valid.shift();
-    };
+        let counter = 0;
+        while (counter < validStartValue.length) {
+          document.getElementById(`${validStartValue[counter]}`).title =
+            "invalid";
+          console.log(validStartValue[counter]); //TEST
+          console.log(document.getElementById(`${validStartValue[counter]}`)); //-TEST
+
+          counter++;
+        };
+
+        valid.splice(0, valid.length);  
 
     console.log("After:");
     console.log(valid);
@@ -220,12 +282,12 @@ function validOptions() {
         parseInt((recent[0].substring(5, 6))), 
         parseInt((recent[0].substring((recent[0].length - 1))))
     ];
-    console.log(recentIndex);
+    //console.log(recentIndex); //TEST
 
     let rowCount = [(recentIndex[0] - 1), (recentIndex[0]), (recentIndex[0] + 1)];
     let colCount = [(recentIndex[1] - 1), (recentIndex[1]), (recentIndex[1] + 1)]; 
-    console.log(rowCount);
-    console.log(colCount);
+    //console.log(rowCount); //TEST
+    //console.log(colCount);//TEST
 
   
     for(let r = 0; r < 4; r++){
@@ -243,6 +305,8 @@ function validOptions() {
 
 };
 
+// ------ MISC. --------
+
 //Tester Function
 function printUsedList() {
     for(let i = 0; i < selectedList.length; i++){
@@ -250,34 +314,7 @@ function printUsedList() {
     };
 };
 
+//WIP FUNCTION -- IGNORE
 function alreadySelected(){
     this.style = "background-color: red";
-};
-
-//Submit current word
-function submitWord() {
-    console.log("Submitting word and resetting board..."); //-TEST
-
-    resetValidStart();
-    refreshLetters();
-    updatePlayedWords();
-    updateScore();
-
-    currentWord = ""; //reset current word
-
-    document.getElementById("word-build").innerHTML = "";
-};
-
-function updatePlayedWords() {
-    playedWords.push(currentWord); //Add current word to played words
-    //Adding to HTML list
-    var listWord = document.createElement("LI");
-    var listWordContent = document.createTextNode(currentWord);
-    listWord.appendChild(listWordContent);
-    document.getElementById("played-words").appendChild(listWord);
-};
-
-function updateScore() {
-    currentScore += currentWord.length; //Add score
-    document.getElementById("total-score").innerHTML = currentScore;
 };
