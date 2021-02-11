@@ -7,6 +7,7 @@ var playedWords = []; //List of words played
 var currentScore = 0; //Current Total Score
 var selectedList = [];
 var recent = [];
+var valid = [];
 
 //Creates Game Board Table
 function setBoard(){
@@ -41,6 +42,8 @@ function setBoard(){
                 cell.onclick = selectLetter;
                 cell.id = `cell-${i}-${j}`; //gives html cell id
                 cell.className = "unselected"; //gives html cell class
+                cell.title = "valid";
+                valid.push(cell.id);
                 matrix[i][j] = randomLetter; //Pushes random letter onto matrix
             };
         };
@@ -53,9 +56,11 @@ function setBoard(){
 
 //Resets letter classes
 function refreshLetters() {
-    var clickedLetters = (document.getElementsByClassName("selected"));
-    while(0 < clickedLetters.length){
-        clickedLetters[0].className = "unselected";
+    selectedList = [];
+    let counter = 0;
+    while(counter < 16){
+        document.getElementsByTagName("td")[counter].className = "unselected";
+        counter++;;
     };
 };
 
@@ -127,11 +132,11 @@ function selectLetter(){
     console.log(recent);
     console.log(`After: Check selectedList 
     ${selectedList}`);
-     printUsedList();
+    printUsedList();
 
-    updateUsedList(); //change class for all in used list to "selected"
-    
+    updateUsedList(); //change class for all in used list to "selected"    
     updateWIP();
+    validOptions();
 };
 
 function updateUsedList() {
@@ -142,6 +147,66 @@ function updateUsedList() {
 
 function updateWIP(){
     document.getElementById("word-build").textContent = currentWord;
+};
+
+//Reset valid options
+function resetValid(){
+        console.log("Reset Valids");
+        while(valid.length >= 1){
+            document.getElementById(`${valid[0]}`).title = "invalid";
+            valid.shift();
+    };
+};
+
+//get current valid options
+function validOptions() {
+    resetValid();
+
+    let recentIndex = [
+        parseInt((recent[0].substring(5, 6))), 
+        parseInt((recent[0].substring((recent[0].length - 1))))
+    ];
+    console.log(recentIndex);
+
+    let rowCount = [(recentIndex[0] - 1), (recentIndex[0]), (recentIndex[0] + 1)];
+    let colCount = [(recentIndex[1] - 1), (recentIndex[1]), (recentIndex[1] + 1)]; 
+    console.log(rowCount);
+    console.log(colCount);
+
+  
+    for(let r = 0; r < 4; r++){
+        if(rowCount[r] > -1 && rowCount[r] < 4){
+           for(let c = 0; c < 4; c++){
+                if(colCount[c] > -1 && colCount[c] < 4){
+                    console.log(document.getElementById(`cell-${rowCount[r]}-${colCount[c]}`));
+                    document.getElementById(`cell-${rowCount[r]}-${colCount[c]}`).title = "validOption";
+                    valid.push(document.getElementById(`cell-${rowCount[r]}-${colCount[c]}`).id);
+                };
+            }; 
+        };
+    };
+
+    console.log(valid);
+
+/*
+    valid = allLetters.map(compLetter => {
+        let compLetterIndex = [(compLetter.id.substring(5, 1)), (compLetter.id.substring(-1))];
+        //if letter's row is within 1 space of recent's row AND letter's column is within 1 space of recent's column
+        if((compLetterIndex[0] <= (recentIndex[0] + 1) && compLetterIndex[0] >= (recentIndex[0] - 1)) 
+        && (compLetterIndex[1] <= (recentIndex[1] + 1) && compLetterIndex[1] >= (recentIndex[1] - 1))){
+            return compLetter;
+        }else{
+            return "";
+        }
+    });
+
+    console.log(`Check valid 
+    ${valid}`);
+    
+    for(let i = 0; i < valid.length; i++){
+        document.getElementById(valid[i]).title = "validOption";
+    }
+*/
 };
 
 //Tester Function
@@ -159,6 +224,8 @@ function alreadySelected(){
 
 //Submit current word
 function submitWord(){
+    resetValid();
+    refreshLetters();
     updatePlayedWords();
     updateScore();
     currentWord = ""; //reset current word

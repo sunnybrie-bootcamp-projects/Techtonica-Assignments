@@ -54,6 +54,14 @@ td {
     border-color: aquamarine;
 }
 
+[title="invalid"]{
+    filter:grayscale(.5);
+}
+
+[title="validOption"] {
+    border-width: .125rem;
+    border-color: aqua;
+}
 
 /* GAME INFO */
 .gameInfo {
