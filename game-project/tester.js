@@ -1,13 +1,32 @@
 //var englishDictionary = require('an-array-of-english-words');
+
 //HTML IMPLEMENTATION
 
 //GAME JS VARIABLES
 var currentWord = ""; //Current word player is building
 var playedWords = []; //List of words played
 var currentScore = 0; //Current Total Score
-var selectedList = [];
-var recent = [];
+var selectedList = []; //List of selected letters (ID's)
+var recent = []; //Most recently selected letter (ID)
 var valid = [];
+const validStartValue = [
+    "cell-0-0",
+    "cell-0-1",
+    "cell-0-2",
+    "cell-0-3",
+    "cell-1-0",
+    "cell-1-1",
+    "cell-1-2",
+    "cell-1-3",
+    "cell-2-0",
+    "cell-2-1",
+    "cell-2-2",
+    "cell-2-3",
+    "cell-3-0",
+    "cell-3-1",
+    "cell-3-2",
+    "cell-3-3",
+]; //Valid moves (ID's)
 
 //Creates Game Board Table
 function setBoard(){
@@ -65,18 +84,27 @@ function refreshLetters() {
 };
 
 function resetRecent() {
-    document.getElementById(recent[0]).className = "unselected";
+    console.log("Clearing Recent Selection..."); //-TEST
+    console.log("Before: "); //-TEST
+    console.log(recent); //-TEST
+
+    document.getElementById(`${recent[0]}`).className = "unselected";
     recent = [];
+
+    console.log("After: "); //-TEST
+    console.log(recent); //-TEST
 };
 
 //Tracks pressed letters
 function selectLetter(){
-    console.log(`CELL:  
-            ${this}`);
-            console.log(this);
-    switch(this.className){
-        //If selected letter is already used
-        case "selected":
+  console.log(`CELL:  
+            ${this}`); //TEST
+  console.log(this); //TEST
+
+  switch (this.className) {
+    //If selected letter is already used
+    case "selected":
+      /* //TESTER
             console.log(`Test: case "selected"`);
             console.log(`Before: Check recent 
             ${recent}`);
@@ -84,11 +112,13 @@ function selectLetter(){
             console.log(`Before: Check selectedList
             ${selectedList}`);
             printUsedList();
+            */
 
-            alreadySelected();
-            break;
-        //if selected letter is not used
-        case "unselected":
+      alreadySelected();
+      break;
+    //if selected letter is not used
+    case "unselected":
+      /* //TESTER
             console.log(`Test: case "unselected"`);
              console.log(`Before: Check recent 
             ${recent}`);
@@ -96,20 +126,22 @@ function selectLetter(){
             console.log(`Before: Check selectedList 
             ${selectedList}`);
             printUsedList();
+            */
 
-            this.className = "recent"; //update to class recent
-            if(recent.length > 0){
-                selectedList.push(recent.shift()); //add previously used to used list
-                recent.push(this.id); //add this letter to last used
-            }else{
-                recent.push(this.id); //add this letter to recent
-            };
-            
-            currentWord += this.textContent; //add this letter to current word
-            
-            break;
-        //if selected letter is recent letter
-        case "recent":
+      this.className = "recent"; //update to class recent
+      if (recent.length > 0) {
+        selectedList.push(recent.shift()); //add previously used to used list
+        recent.push(this.id); //add this letter to last used
+      } else {
+        recent.push(this.id); //add this letter to recent
+      }
+
+      currentWord += this.textContent; //add this letter to current word
+
+      break;
+    //if selected letter is recent letter
+    case "recent":
+      /* //TESTER
             console.log(`Test: case "recent"`);
             console.log(`Before: Check recent 
             ${recent}`);
@@ -117,22 +149,25 @@ function selectLetter(){
             console.log(`Before: Check selectedList 
             ${selectedList}`);
             printUsedList();
+            */
 
-            currentWord = currentWord.substring(0, (currentWord.length - 1)); //subtract this letter from current word
-            this.className = "unselected"; //revert this letter's class to unselected
-            recent.push(selectedList.pop()); //pop off previously used letter from used list and add to last used
-            recent.shift(); //remove this letter from last used
-            document.getElementById(recent[0]).className = "recent";
-            break;
-            
-        default:
-    };
+      currentWord = currentWord.substring(0, currentWord.length - 1); //subtract this letter from current word
+      this.className = "unselected"; //revert this letter's class to unselected
+      recent.push(selectedList.pop()); //pop off previously used letter from used list and add to last used
+      recent.shift(); //remove this letter from last used
+      document.getElementById(recent[0]).className = "recent";
+      break;
+
+    default:
+  }
+  /* //TESTER
     console.log(`After: Check recent 
     ${recent}`);
     console.log(recent);
     console.log(`After: Check selectedList 
     ${selectedList}`);
     printUsedList();
+    */
 
     updateUsedList(); //change class for all in used list to "selected"    
     updateWIP();
@@ -149,18 +184,37 @@ function updateWIP(){
     document.getElementById("word-build").textContent = currentWord;
 };
 
-//Reset valid options
+//Resets valids after word submission
+function resetValidStart(){
+            console.log("Clear Valids...");
+            
+            valid = validStartValue;
+
+            while (valid.length >= 1) {
+              document.getElementById(`${valid[0]}`).title = "validOption";
+              valid.shift();
+            }
+};
+
+//Reset valid options after move
 function resetValid(){
-        console.log("Reset Valids");
+        console.log("Resetting Valids...");
+        console.log("Before:");
+        console.log(valid);
+
         while(valid.length >= 1){
             document.getElementById(`${valid[0]}`).title = "invalid";
             valid.shift();
     };
+
+    console.log("After:");
+    console.log(valid);
 };
 
 //get current valid options
 function validOptions() {
     resetValid();
+    console.log("Getting New Valid Options...");
 
     let recentIndex = [
         parseInt((recent[0].substring(5, 6))), 
@@ -178,7 +232,6 @@ function validOptions() {
         if(rowCount[r] > -1 && rowCount[r] < 4){
            for(let c = 0; c < 4; c++){
                 if(colCount[c] > -1 && colCount[c] < 4){
-                    console.log(document.getElementById(`cell-${rowCount[r]}-${colCount[c]}`));
                     document.getElementById(`cell-${rowCount[r]}-${colCount[c]}`).title = "validOption";
                     valid.push(document.getElementById(`cell-${rowCount[r]}-${colCount[c]}`).id);
                 };
@@ -186,27 +239,8 @@ function validOptions() {
         };
     };
 
-    console.log(valid);
+    console.log(valid); //-TEST
 
-/*
-    valid = allLetters.map(compLetter => {
-        let compLetterIndex = [(compLetter.id.substring(5, 1)), (compLetter.id.substring(-1))];
-        //if letter's row is within 1 space of recent's row AND letter's column is within 1 space of recent's column
-        if((compLetterIndex[0] <= (recentIndex[0] + 1) && compLetterIndex[0] >= (recentIndex[0] - 1)) 
-        && (compLetterIndex[1] <= (recentIndex[1] + 1) && compLetterIndex[1] >= (recentIndex[1] - 1))){
-            return compLetter;
-        }else{
-            return "";
-        }
-    });
-
-    console.log(`Check valid 
-    ${valid}`);
-    
-    for(let i = 0; i < valid.length; i++){
-        document.getElementById(valid[i]).title = "validOption";
-    }
-*/
 };
 
 //Tester Function
@@ -220,17 +254,18 @@ function alreadySelected(){
     this.style = "background-color: red";
 };
 
-
-
 //Submit current word
-function submitWord(){
-    resetValid();
+function submitWord() {
+    console.log("Submitting word and resetting board..."); //-TEST
+
+    resetValidStart();
     refreshLetters();
     updatePlayedWords();
     updateScore();
+
     currentWord = ""; //reset current word
+
     document.getElementById("word-build").innerHTML = "";
-    
 };
 
 function updatePlayedWords() {
