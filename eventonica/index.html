@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <link rel="stylesheet" href="main.css">
+    <script type="text/javascript" src="EventRecommender.js"></script>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+
+<body>
+    <nav>[register/login]/[current user]
+    </nav>
+    
+    <header><h1 class="eventonica">Eventonica!</h1>
+    <button onclick="loadEventList()">Start</button></header>
+    
+    <main>
+        <table id="eventTable">
+            
+            <!-- Event List Header -->
+            <thead id="eventListHeader" class="listHeader">
+                <tr>
+                    <th id="th-date">date</th> <th id="th-description">event</th> <th id="th-category">category</th> <th id="th-fave">favorited?</th>
+                </tr>
+            </thead>
+            
+            <!-- Events -->
+            <tbody id="eventList">
+                <template id="EVENT-TEMPLATE">
+                    <tr class="eventListItem">
+                        <td class="date" headers="th-date">[date]</td>
+                        <td class="description" headers="th-description">
+                        <h2 class="eventName">[Event Name Here]</h2>
+                        <p class="eventDescription">[Description of event goes here]</p>
+                        </td>
+                        <td class="eventCategory" headers="th-category">[category]</td>
+                        <td class="faveStatus" headers="th-fave">[fave icon]</td>
+                </tr>
+            </template>
+
+            </tbody>
+            
+            <!-- Template Event -->
+            <tfoot id="eventAdd">
+
+            </tfoot>
+                    
+        </table>
+    </main>
+    
+    <footer></footer>
+</body>
+</html>

@@ -1,0 +1,28 @@
+body {
+    background-color: dimgrey;
+}
+
+table {
+    display: table;
+    width: 95%;
+    margin: auto;
+    
+    background-color: aliceblue;
+    color: rgba(26, 26, 26, 1);
+}
+
+thead {
+
+    background-color: steelblue;
+    
+}
+
+th {
+    margin: auto;
+    padding: 1rem;
+    color: aliceblue;
+}
+
+td {
+    padding: .5rem;
+}
