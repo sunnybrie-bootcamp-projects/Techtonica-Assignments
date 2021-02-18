@@ -141,6 +141,8 @@ class Event {
     this.eventDescription = description;
     this.eventCategory = category;
     this.eventDate = new Date(date);
+    console.log(`SHOWING NEW EVENT'S DATE`);
+    console.log(this.eventDate.getDate()); //TEST
     
     Event.allEvents.push(this); // keep track of all created instances
   }
@@ -195,6 +197,7 @@ class User {
   }
 };
 
+//--- MINOR FUNCTONS ---
 //Corrects search syntax
 function searchKeyChecker(whichClass, check) {
   //console.log(`Checking search key...
@@ -223,7 +226,7 @@ function searchKeyChecker(whichClass, check) {
   return trueKey;
 };
 
-//Returns getDay() date method as a string
+//Return getDay() and getMonth() Date methods as strings
 function getDayString(date) {
   let dayNum = date.getDay();
   const weekArr = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
@@ -254,8 +257,7 @@ function initializeEvent(currentEvent, listTable){
   newDate.setAttribute("headers", "th-date");
   newDate.innerHTML = `<h3 class="eventDay">${getDayString(eDate)}</h3>
   <h3 class="eventDate">${eDate.getDate()}</h3>
-  <h3 class="eventMonth">${getMonthString(eDate)}</h3>
-  <!-- <h3 class="eventTime">${eDate.getTime()}</h3> -->`;
+  <h3 class="eventMonth">${getMonthString(eDate)}</h3>`;
   newRow.appendChild(newDate);
 
   let newDescription = document.createElement("td");
@@ -274,37 +276,69 @@ function initializeEvent(currentEvent, listTable){
   let newFaveStatus = document.createElement("td");
   newFaveStatus.setAttribute("class", "fave");
   newFaveStatus.setAttribute("headers", "th-fave");
-  newFaveStatus.innerHTML = `[fave?]`;
+  newFaveStatus.innerHTML = `<img src="graphics/notfavorite.png" class="notFave">`;
   newRow.appendChild(newFaveStatus);
 
 };
 
+function loadEventList() {
+  eventList = document.getElementById("eventTable").tBodies.namedItem("eventList"); //Gets Event List Table from HTML
+  console.log(`Loading event list...`); //Test
+  console.log(eventList); //Test
 
-function loadEventList(eventArr){
-    let eventList = document.getElementById("eventTable").tBodies.namedItem("eventList"); //Gets Event List Table from HTML
-    
-    console.log(`Loading event list...`);//Test
-    console.log(eventList);//Test
-
-    for(item of Event.allEvents){
-        initializeEvent(item, eventList);
-    };
-
+  for (item of Event.allEvents) {
+    initializeEvent(item, eventList);
+  }
 };
 
-//document.getElementsByTagName("body").ready(loadEventList(Event.allEvents));
+function getSubmittedEvent(){
+  console.log(`Getting event submission...`); //TEST
+  let testForm = document.getElementById("eventSubmission").elements; //Contains an array of the form elements
+  //console.log(testForm); //TEST
+  let deliveryBox = new Object; 
 
+  for (item of testForm) {
+    console.log(`${item.id}`); //TEST
+    console.log(`${item}`); //TEST
+    console.log(`${item.value}`); //TEST
+
+    if(`${item.id}`.includes("Date")){
+      deliveryBox.date = `${item.value}`;
+    }else
+    if(`${item.id}`.includes("Name")){
+      deliveryBox.name = `${item.value}`;
+    }else
+    if(`${item.id}`.includes("Description")){
+      deliveryBox.description = `${item.value}`;
+    }else
+    if(`${item.id}`.includes("Category")){
+      deliveryBox.category = `${item.value}`;
+    }else{
+      console.log("Value not registered");
+    };
+          
+  };
+
+  console.log(deliveryBox); //TEST
+  let newestEvent = testTonica.addEvent(deliveryBox.name, deliveryBox.description, deliveryBox.category, deliveryBox.date);
+  initializeEvent(newestEvent, eventList);
+};
+
+
+window.addEventListener('DOMContentLoaded', (event) => {
+  loadEventList();
+});
 
 //---- FOR TESTING ----
-module.exports = {Eventonica, Event, User, searchKeyChecker};
+// module.exports = {Eventonica, Event, User, searchKeyChecker};
 
 //--- DECLARED OBJECTS ---
-var evt = new Eventonica();
+var testTonica = new Eventonica();
 
-evt.addEvent("Pet Festival", "Pet adoption festival!", "festival", "6-29-2021");
-evt.addEvent("Lizzo Concert", "F*ck yeah, Lizzo!", "concert", "4-1-2021");
-evt.addEvent("Tech Art Show", "Art in tech", "Gallery", "4-12-2021");
+testTonica.addEvent("Pet Festival", "Pet adoption festival!", "festival", "6-29-2021");
+testTonica.addEvent("Lizzo Concert", "F*ck yeah, Lizzo!", "concert", "4-1-2021");
+testTonica.addEvent("Tech Art Show", "Art in tech", "Gallery", "4-12-2021");
 
-evt.addUser("Blue", "bananas123");
-evt.addUser("Jitterbug19", "lolbutts");
-evt.addUser("TechfaceMcGee", "asdfghjkl");
+testTonica.addUser("Blue", "bananas123");
+testTonica.addUser("Jitterbug19", "lolbutts");
+testTonica.addUser("TechfaceMcGee", "asdfghjkl");

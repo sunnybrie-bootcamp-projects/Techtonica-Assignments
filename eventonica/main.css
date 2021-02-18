@@ -1,7 +1,19 @@
 body {
     background-color: dimgrey;
+    
+    font-family: 'Lato', sans-serif;
 }
 
+h1 {
+    
+    color: white;
+    
+    font-family: 'Dosis', sans-serif;
+    font-weight: 100;
+    font-size: 5rem;
+}
+
+/* EVENT BOARD */
 table {
     display: table;
     width: 95%;
@@ -25,4 +37,33 @@ th {
 
 td {
     padding: .5rem;
+}
+
+img.notFave {
+    display: block;
+    max-width: 25%;
+    margin: auto;
+}
+
+
+/*ADD EVENT FORM*/
+form {
+    display: grid;
+    max-width: 80%;
+    margin: auto;
+    padding: 1rem;
+    
+    grid-template-columns: 20% auto auto;
+    grid-template-rows: auto auto;
+}
+
+label {
+    grid-column: 1;
+}
+
+input,
+textarea,
+button {
+    margin: auto auto auto 1rem;
+    grid-column: 2 / span 2;
 }
