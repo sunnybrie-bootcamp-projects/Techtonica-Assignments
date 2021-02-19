@@ -8,5 +8,9 @@
   },
   "keywords": [],
   "author": "Brie Klassen (aka sunnybrie)",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "browserify": "^17.0.0",
+    "requirejs": "^2.3.6"
+  }
 }

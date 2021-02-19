@@ -1,6 +1,6 @@
-const myER = require("../EventRecommender");
+const ER_Classes = require("../node_modules/classes");
 
-var testTonica = new myER.Eventonica();
+var testTonica = new ER_Classes.Eventonica();
 
 describe("addEvent", function() {
   eventA = testTonica.addEvent("NAME", "DESCRIPTION", "CATEGORY", "1-1-2021");

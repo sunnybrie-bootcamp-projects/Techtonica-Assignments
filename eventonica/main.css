@@ -1,42 +1,115 @@
+/* COLORS */
+
+/*
+.eventonica-1-rgba { color: rgba(32, 36, 38, 1); }
+.eventonica-2-rgba { color: rgba(39, 107, 140, 1); }
+.eventonica-3-rgba { color: rgba(31, 169, 219, 1); }
+.eventonica-4-rgba { color: rgba(22, 196, 242, 1); }
+.eventonica-5-rgba { color: rgba(186, 245, 255, 1); }
+*/
+
 body {
-    background-color: dimgrey;
+    background: linear-gradient(to bottom, rgba(32, 36, 38, .5), rgba(32, 36, 38, .75)), url("graphics/cityscape.jpeg") no-repeat center fixed;
+    background-attachment: fixed;
+    background-size: cover, cover;
+    background-blend-mode: normal;
     
     font-family: 'Lato', sans-serif;
 }
 
-h1 {
-    
-    color: white;
-    
-    font-family: 'Dosis', sans-serif;
-    font-weight: 100;
-    font-size: 5rem;
+header {
+    max-width: 90%;
+    margin: auto;
+    filter: drop-shadow(0rem 0rem .25em #1FA9DB);
 }
 
-/* EVENT BOARD */
+main {
+    
+}
+
+h1 {
+    
+    color: #BAF5FF;
+
+    font-family: 'Dosis', sans-serif;
+    font-weight: 300;
+    font-size: 6rem;
+}
+
+h2{
+    max-width: 90%;
+    margin: auto;
+    
+    color: rgba(31, 169, 219, 1);
+    
+    font-family: 'Dosis', sans-serif;
+    font-weight: 400;
+    font-size: 2.5rem;
+}
+
+h3{
+    font-family: 'Dosis', sans-serif;
+    font-weight: 500;
+    font-size: 1.5rem;
+}
+
+h4.eventName{
+    font-family: 'Dosis', sans-serif;
+    font-weight: 500;
+    font-size: 1.4rem;
+}
+
+/* BOARD */
 table {
     display: table;
     width: 95%;
     margin: auto;
+    padding: 1.5rem;
+    padding-top: 0rem;
     
-    background-color: aliceblue;
-    color: rgba(26, 26, 26, 1);
+    border-collapse: separate;
+    border-spacing: 1rem 1.75rem;
+    
+    background-color: rgba(186, 245, 255, .125);
+    backdrop-filter: blur(5px);
+    box-shadow: inset 0 0 3rem rgba(186, 245, 255, .25);
+    color: #88F0DC;
 }
 
 thead {
-
-    background-color: steelblue;
+    position: relative;
+    top: -5%;
     
 }
 
 th {
     margin: auto;
     padding: 1rem;
+    
+    
     color: aliceblue;
+    text-shadow: 0rem 0rem .25rem rgba(32, 36, 38, 1);
+}
+
+tbody {
+   
+}
+
+tbody tr {
+    
 }
 
 td {
-    padding: .5rem;
+    padding: .25rem;
+    
+    border: .25rem outset;
+    border-color: rgba(186, 245, 255, .25);
+    
+    background-image: linear-gradient(145deg, rgba(186, 245, 255, .125), rgba(39, 107, 140, .125));
+    box-shadow: inset 0 0 .5rem rgba(39, 107, 140, .5);
+     
+   filter: drop-shadow(.5rem .5rem .25rem rgba(186, 245, 255, .25)); 
+    
 }
 
 img.notFave {
@@ -45,16 +118,42 @@ img.notFave {
     margin: auto;
 }
 
+/* Table Dates */
+td.date {
+    text-align: center;
+}
+
+h4.eventDay {
+    font-style: oblique;
+}
+
+h4.eventDate {
+    font-size: 2em;
+}
+
+h4.eventDate,
+h4.eventDay,
+h4.eventMonth,
+h4.eventYear {
+    margin: auto;
+    text-align: center;
+}
+
 
 /*ADD EVENT FORM*/
 form {
     display: grid;
     max-width: 80%;
-    margin: auto;
+    margin: 3rem auto;
     padding: 1rem;
     
     grid-template-columns: 20% auto auto;
     grid-template-rows: auto auto;
+    
+    
+    background-color: rgba(186, 245, 255, .125);
+    backdrop-filter: blur(5px);
+    box-shadow: inset 0 0 3rem rgba(186, 245, 255, .25);
 }
 
 label {
