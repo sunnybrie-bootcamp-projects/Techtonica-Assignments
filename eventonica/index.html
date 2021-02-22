@@ -24,30 +24,19 @@
     </header>
     
     <main>
-        <h2>Upcoming Events</h2>
+        <!-- EVENT TABLE -->
+        <h2 class="tableTitle">Upcoming Events</h2>
         <table id="eventTable">
             
             <!-- Event List Header -->
             <thead id="eventListHeader" class="listHeader">
                 <tr>
-                    <th id="th-date"><h3>date</h3></th> <th id="th-description"><h3>event</h3></th> <th id="th-category"><h3>category</h3></th> <th id="th-fave"><h3>favorited?</h3></th>
+                    <th id="th-date"><h3>date</h3></th> <th id="th-description"><h3>event</h3></th> <th id="th-category"><h3>category</h3></th> <th id="th-fave"><h3>♡</h3></th>
                 </tr>
             </thead>
             
             <!-- Events -->
             <tbody id="eventList">
-                <!--<template id="EVENT-TEMPLATE">
-                    <tr class="eventListItem">
-                        <td class="date" headers="th-date">[date]</td>
-                        <td class="description" headers="th-description">
-                        <h2 class="eventName">[Event Name Here]</h2>
-                        <p class="eventDescription">[Description of event goes here]</p>
-                        </td>
-                        <td class="eventCategory" headers="th-category">[category]</td>
-                        <td class="faveStatus" headers="th-fave">[fave icon]</td>
-                    </tr>
-                </template>
-                -->
                 
                 
             </tbody>
@@ -59,7 +48,8 @@
                     
         </table>
         
-        
+        <!-- EVENT ADD FORM -->
+        <h2 class="tableTitle"><button onclick="formToggle()">Add Event</button></h2>
         <form id="eventSubmission" action="#eventSubmission">
             <label for="in-eDate">Event Date:</label>
             <input id="in-eDate" type="datetime-local">
@@ -69,11 +59,23 @@
             <textarea id="in-eDescription" rows="10" cols="30">Describe your event here.</textarea>
             <label for="in-eCategory">Event Category:</label>
             <input id="in-eCategory" type="text">
-            <button id="submitEvent" onclick="getSubmittedEvent()">Try</button>
+            <button id="submitEvent" onclick="getSubmittedEvent()">Submit Event</button>
         </form>
                 
     </main>
     
     <footer></footer>
+    
 </body>
+<script>
+    function formToggle(){
+        let displayChange = document.getElementById("eventSubmission");
+
+        if (displayChange.style.display == "none") {
+            displayChange.style.display = "grid";
+            } else {
+            displayChange.style.display = "none";
+        }
+    };
+</script>
 </html>

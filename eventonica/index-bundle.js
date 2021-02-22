@@ -1,8 +1,35 @@
 (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
-const myClasses = require('./node_modules/classes');
+const myClasses = require("./node_modules/classes");
 const _Eventonica = myClasses.Eventonica;
 const _Event = myClasses.Event;
 const _User = myClasses.User;
+
+//OBJECT DECLARATIONS FOR TESTING PURPOSES
+var testTonica = new _Eventonica();
+
+testTonica.addEvent(
+  "Pet Festival",
+  "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent laoreet dapibus tincidunt. Aliquam eu tempus erat. Proin id dui laoreet, semper massa ut, elementum arcu. Duis convallis neque nunc, gravida iaculis metus ornare quis. Donec et nisi nec leo sagittis tempus. Aenean pulvinar lacus a nulla vestibulum gravida. Aliquam ut imperdiet lacus. Curabitur dignissim enim massa, vel dignissim nisl gravida id. Quisque felis lacus, elementum eu eleifend a, auctor eget purus. Vestibulum a consequat nisl. Nam odio dolor, tincidunt eget blandit ut, pellentesque quis magna. Nam gravida ligula nunc, et cursus risus convallis ac. Nulla viverra pellentesque mauris at elementum. Mauris cursus, quam vel gravida euismod, enim diam porta tellus, consectetur gravida est risus id lacus. Nulla porttitor at orci sed placerat. Vestibulum malesuada, purus vitae placerat ultrices, nunc metus porta urna, non ornare nibh est elementum elit.",
+  "Charity Fundraiser",
+  "6-29-2021"
+);
+testTonica.addEvent(
+  "Lizzo Concert",
+  "Nulla quam sem, rutrum et tempus eget, varius ut odio. Quisque eu mi ut ligula congue maximus sit amet eget felis. Maecenas sit amet aliquam purus. Pellentesque augue turpis, venenatis a diam eget, auctor vulputate libero. Duis hendrerit leo sed lorem sodales, a imperdiet massa aliquam. Etiam vehicula sodales orci vestibulum porta. Donec ut nisl eros. Nunc ac luctus felis, pulvinar tincidunt sem. Curabitur feugiat metus libero, eu aliquet eros convallis ut.",
+  "concert",
+  "4-1-2021"
+);
+testTonica.addEvent(
+  "Tech Art Show",
+  "Aenean auctor, felis in interdum tincidunt, enim mauris consectetur metus, non dapibus turpis odio vel purus. Praesent ligula diam, efficitur id lectus at, varius rhoncus felis. Praesent aliquet leo ac vehicula tristique. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Phasellus nec orci felis. Donec rhoncus a purus at condimentum. In venenatis maximus metus non sagittis.",
+  "Gallery",
+  "4-12-2021"
+);
+
+testTonica.addUser("Blue", "bananas123");
+_User.allUsers[0].userFavorites = [100, 102];
+testTonica.addUser("Jitterbug19", "lolbutts");
+testTonica.addUser("TechfaceMcGee", "asdfghjkl");
 
 //--- MINOR FUNCTONS ---
 
@@ -142,14 +169,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
 
 //---- FOR TESTING ----
-
-//------ DECLARED OBJECTS ---
-var testTonica = new _Eventonica();
-
-testTonica.addEvent("Pet Festival", "Pet adoption festival!", "festival", "6-29-2021");
-testTonica.addEvent("Lizzo Concert", "F*ck yeah, Lizzo!", "concert", "4-1-2021");
-testTonica.addEvent("Tech Art Show", "Art in tech", "Gallery", "4-12-2021");
-
 
 },{"./node_modules/classes":2}],2:[function(require,module,exports){
 class Eventonica {
@@ -337,6 +356,7 @@ class User {
 
     this.userName = name;
     this.userPassword = password;
+    this.userDateJoined = new Date();
     this.userFavorites = [];
 
     if (this.id % 2 == 0) {
@@ -374,6 +394,8 @@ function searchKeyChecker(whichClass, check) {
 
   return trueKey;
 };
+
+
 
 module.exports = {Eventonica, Event, User};
 },{}]},{},[1]);
