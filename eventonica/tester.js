@@ -1,4 +1,3 @@
-(function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
 //CLASSES
 
 class Eventonica {
@@ -197,6 +196,15 @@ class User {
 
     User.allUsers.push(this); // keep track of all created instances
   }
+
+  toggleFavorite(e){
+    if(this.userFavorites.includes(e)){
+      let removed = this.userFavorites.splice((this.userFavorites.indexOf(e)), 1);
+    } else {
+      this.userFavorites.push(e);
+    };
+  }
+
 }
 
 //GLOBAL TEST VARIABLES
@@ -221,7 +229,15 @@ testTonica.addEvent(
   "4-12-2021"
 );
 
-var bluesFaves = [100, 102];
+testTonica.addUser("Blue", "bananas123");
+User.allUsers[0].userFavorites = [Event.allEvents[0], Event.allEvents[2]];
+testTonica.addUser("Jitterbug19", "lolbutts");
+User.allUsers[1].userFavorites = [Event.allEvents[1], Event.allEvents[2]];
+testTonica.addUser("TechfaceMcGee", "asdfghjkl");
+User.allUsers[2].userFavorites = [Event.allEvents[0]];
+
+var loggedIn = User.allUsers[0];
+
 
 //--- MINOR FUNCTONS ---
 
@@ -306,10 +322,10 @@ function initializeEvent(currentEvent, listTable){
   newFaveStatus.setAttribute("class", "fave");
   newFaveStatus.setAttribute("headers", "th-fave");
 
-  if(bluesFaves.includes(currentEvent.id)){
-    newFaveStatus.innerHTML = `<img src="graphics/favorite.png" class="Fave">`;
+  if((loggedIn.userFavorites).includes(currentEvent)){
+    newFaveStatus.innerHTML = `<img src="graphics/favorite.png" class="Fave" onclick="loggedIn.toggleFavorite('${currentEvent}')">`;
   } else {
-    newFaveStatus.innerHTML =`<img src="graphics/notfavorite.png" class="notFave">`;
+    newFaveStatus.innerHTML = `<img src="graphics/notfavorite.png" class="notFave" onclick="loggedIn.toggleFavorite('${currentEvent}')">`;
   };
 
   newRow.appendChild(newFaveStatus);
@@ -362,14 +378,115 @@ function getSubmittedEvent(){
   initializeEvent(newestEvent, eventList);
 };
 
+function toggleFave(e){
+  loggedIn.toggleFave(e);
+};
+// ------ FOR USERS ---
+
+// Adds User to User Board
+function initializeUser(currentUser, listTable){
+  console.log(`Initializing User...`)//TEST
+  console.log(currentUser); //TEST
+
+  let newRow = document.createElement("tr");
+  newRow.setAttribute("class", "userListItem");
+
+  console.log(listTable);
+
+  listTable.appendChild(newRow);
+
+  //Users id
+  let newID = document.createElement("td");
+  newID.setAttribute("class", "userid");
+  newID.setAttribute("headers", "th-userid");
+  newID.innerHTML = `${currentUser.id}`;
+  newRow.appendChild(newID);
+
+  //Users profile (name and avatar)
+  let newProfile = document.createElement("td");
+  newProfile.setAttribute("class", "profile");
+  newProfile.setAttribute("headers", "th-profile");
+  newProfile.innerHTML = `<profilepic>${currentUser.avatar}</profilepic>
+                        <h4 class="userName">${currentUser.userName}</h4>`;
+  newRow.appendChild(newProfile);
+
+  //Date User Joined
+  let newDate = document.createElement("td");
+  let uDate = currentUser.userDateJoined; //to spare typing it out over and over
+  newDate.setAttribute("class", "date");
+  newDate.setAttribute("headers", "th-date");
+  newDate.innerHTML = `<h4 class="eventDay">${getDayString(uDate)}</h4>
+  <h4 class="eventDate">${uDate.getDate()}</h4>
+  <h4 class="eventMonth">${getMonthString(uDate)}</h4>
+  <h4 class="eventMonth">${uDate.getFullYear()}</h4>`;
+  newRow.appendChild(newDate);
+
+  //Users Favorites
+  console.log(`Adding User Favorites...`); //TEST
+  console.log(Event.allEvents);//TEST
+
+  let newFaves = document.createElement("td");
+  newFaves.setAttribute("class", "faveEvents");
+  newFaves.setAttribute("headers", "th-fave");
+  
+  let newList = document.createElement("ul");
+  newList.setAttribute("class", "listOfFaves");
+  
+  currentUser.userFavorites.forEach((fave) => {
+
+    let eName = `${fave.eventName}`;
+
+    //console.log(`Event Found: ${eName}`); //TEST
+
+    let newListItem = document.createElement("li");
+
+    newListItem.innerHTML = `${eName}`;
+    newList.appendChild(newListItem);
+  });
+
+  newFaves.appendChild(newList);
+  newRow.appendChild(newFaves);
+};
+
+// Runs every user in allUsers through initializeUser
+function loadUserList() {
+  userList = document.getElementById("userTable").tBodies.namedItem("userList"); //Gets User List Table from HTML
+  //console.log(`Loading user list...`); //Test
+  //console.log(userList); //Test
+
+  for (item of User.allUsers) {
+    initializeUser(item, userList);
+  }
+};
+
 
 //--- SITE EVENT LISTENERS ---
 //Triggers loadEventList() function
-document.getElementById("eventTable").addEventListener('DOMContentLoaded', loadEventList);
+window.addEventListener('DOMContentLoaded', function(){
 
-document.getElementById("submitEvent").addEventListener('click', getSubmittedEvent);
+  let whatPage = document.title;
+  //console.log(whatPage); //TEST
+
+  switch(whatPage){
+    case "Eventonica Event Board":
+      loadEventList();
+      break;
+    case "Eventonica Users":
+      loadUserList();
+      break;
+    default:
+      console.log(`ERROR: Can't determine page.`);
+      break;
+
+
+  };
+
+  var submitButton = document.getElementById("submitEvent");
+  console.log(submitButton);
+  submitButton.addEventListener("click", getSubmittedEvent);
+});
+
+
 
 
 //---- FOR TESTING ----
-
-},{}]},{},[1]);

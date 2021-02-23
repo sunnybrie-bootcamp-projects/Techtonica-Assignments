@@ -26,11 +26,38 @@ body {
     font-family: 'Lato', sans-serif;
 }
 
+#currentUser {
+    display: block;
+    position: absolute;
+    right: 0em;
+    top: 0em;
+    
+    text-align: center;
+}
+
+img.loggedInAvatar {
+    max-height: 50%;
+    max-width: 50%;
+}
+
+.navUser{
+    padding: 0em;
+    margin: .125rem;
+    font-family: 'Dosis', sans-serif;
+    font-weight: 500;
+    font-size: 1.25rem;
+    
+    color: #F2884B;
+    text-shadow: 0rem 0rem .25rem rgba(32, 36, 38, 1);
+}
+
 header {
     max-width: 90%;
     margin: auto;
     
 }
+
+
 
 main {
     
@@ -181,7 +208,8 @@ td {
     
 }
 
-img.notFave {
+img.notFave,
+img.Fave {
     display: block;
     max-width: 90%;
     margin: auto;

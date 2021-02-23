@@ -9,21 +9,29 @@
     <link rel="stylesheet" href="main.css">
     
     <!-- SCRIPTS -->
-    <script src="users-bundle.js"></script>
+    <script src="tester.js"></script>
     
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
+    <title>Eventonica Users</title>
 </head>
 
 <body>
-    <nav>[register/login]/[current user]
+    <nav>
+        <div id="currentUser"> 
+            <p><i>Logged in as...</i></p>
+            <img class="loggedInAvatar" src="graphics/defaultavatar1.png">
+            
+            <h6 class="navUser">Blue</h6>
+        </div>
+        
     </nav>
     
     <header><h1 class="eventonica">Eventonica</h1> 
     </header>
     
     <main>
+        <h2 class="tableTitle">All Users</h2>
         <table id="userTable">
             
             <!-- Event List Header -->
