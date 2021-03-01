@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<head>
+     
+    <!-- CSS STYLESHEET -->
+    <link rel="stylesheet" href="style.css">
+    
+<!--  The jQuery library is a single JavaScript file, and you reference it with the HTML.-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
+    <meta charset=“utf-8”>
+    
+    <title>Events</title>
+</head>
+
+
+<html lang="en">
+<body>
+    <!-- HEADER -->
+    <div class="header">
+        <h1>EVENTS FINDER</h1>
+    </div>
+    
+    
+    <form id="price-range" action="#">
+  
+        <label for="min-price">Min. Price:</label>
+        <input type="text" id="min-price" name="min-price" value=""><br><br>
+        
+        <label for="max-price">Max. Price:</label>
+        <input type="text" id="max-price" name="max-price" value=""><br><br>
+        
+        <input type="button" value="Submit" onclick="searchAllTickets()">
+    </form>
+                                    
+    <table id="event-list">
+        
+    </table>
+    
+    <table id="ticket-filter">
+    
+    </table>
+    
+
+</body>
+
+    <script type="text/javascript" src="script.js"></script>
+
+</html>

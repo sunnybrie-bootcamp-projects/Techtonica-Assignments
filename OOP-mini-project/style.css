@@ -1,0 +1,13 @@
+table {
+    width: 75vw;
+    height: 80vh;
+    background-color: cadetblue;
+}
+
+tbody>tr {
+    background-color: darkturquoise;
+};
+
+eventname {
+    color: pink;
+}
