@@ -1,4 +1,4 @@
-//import {englishDictionary} from 'dictionary/an-array-of-english-words/index.json';
+
 
 //var englishDictionary = require('./dict');
 
@@ -10,7 +10,11 @@
     if (err) throw err;
 
     const words = JSON.parse(data);
-    console.log(words.filter((d) => /dogs/.test(d))); //TEST
+    const badLetterString = `${(['a', 'i', 'b']).join('|')}`;
+    const myPattern = new RegExp (`\\b((?!(${badLetterString}))\\w)+\\b`, 'g');
+    console.log(myPattern);
+    //console.log(words.filter((d) => {return (d == "bird");})); //TEST
+    console.log(words.filter(d => (myPattern).test(d)));
     });
 //};
 

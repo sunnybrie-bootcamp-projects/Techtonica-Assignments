@@ -55,7 +55,8 @@ td {
 }
 
 [title="invalid"]{
-    filter:grayscale(.5);
+    
+   pointer-events: none; filter:grayscale(.5);
 }
 
 [title="validOption"] {

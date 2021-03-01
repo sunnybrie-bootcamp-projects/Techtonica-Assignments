@@ -318,3 +318,20 @@ function printUsedList() {
 function alreadySelected(){
     this.style = "background-color: red";
 };
+
+// ----- CHECKING FOR REAL WORDS -----
+function checkWord(currentWord) {
+    const fs = require("fs");
+
+    fs.readFile("dict.json", function (err, data) {
+    if (err) throw err;
+
+    const words = JSON.parse(data);
+    if(words.indexOf(currentWord) !== -1){
+        return true;
+    }else{
+        return false;
+    };
+    //console.log(words.filter((d) => /bird/.test(d))); //TEST
+    });
+};
