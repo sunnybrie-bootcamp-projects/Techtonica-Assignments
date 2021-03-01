@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<head>
+    <script src= "index.js"></script>
+    <title>First Node App!</title>
+</head>
+
+<body>
+    <h1>Welcome to my first Node app!</h1>
+    <p>Node is awesome.</p>
+    <button id="ajaxButton" type="button" onclick="makeRequest('test.xml')">Make a request</button>
+    
+    <script>
+        (function () {
+            var httpRequest;
+            document.getElementById("ajaxButton").addEventListener('click', makeRequest);
+
+            function makeRequest() {
+                httpRequest = new XMLHttpRequest();
+
+                if (!httpRequest) {
+                    alert('Giving up :( Cannot create an XMLHTTP instance');
+                    return false;
+                }
+                httpRequest.onreadystatechange = alertContents;
+                httpRequest.open('GET', 'test.html');
+                httpRequest.send();
+            }
+
+            function alertContents() {
+                if (httpRequest.readyState === XMLHttpRequest.DONE) {
+                    if (httpRequest.status === 200) {
+                        var xmldoc = httpRequest.responseXML;
+                        var root_node = xmldoc.getElementsByTagName('root').item(0);
+                        alert(root_node.firstChild.data);
+                    } else {
+                        alert('There was a problem with the request.');
+                    }
+                }
+            }
+        })();
+    </script>
+</body>
+
+</html>
