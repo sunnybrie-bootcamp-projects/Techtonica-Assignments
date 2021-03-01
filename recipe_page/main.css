@@ -23,12 +23,27 @@ body {
     box-shadow: rgba(0, 0, 0, .5) .5em .5em .5em;
 }
 
+#carowrap {
+    max-width: 90%;
+    margin: auto;
+    padding: 1em;
+}
+
+#carowrap p {
+    text-align: center;
+    font-size: .75em;
+    
+    font-family: 'monarcha', serif;
+    font-weight: 400;
+    font-style: italic;
+    color: darkslategray;
+}
 
 #hero {
     display: block;
     margin: auto;
     max-height: 20em;
-    max-width: 95%;
+    max-width: 100%;
     overflow: hidden;
 
     
@@ -39,6 +54,7 @@ body {
 #hero img{
     max-width: 100%;
     height: 20em;
+    
 }
 
 #recipetitle {
