@@ -71,4 +71,4 @@ var apprenticelist = {
 };
 
 lists.set(`${stafflist.name}`, stafflist);
-lists.set(`${apprenticelist.name}`, apprenticelist);
+lists.set(`${apprenticelist.name}`, apprenticelist); 
