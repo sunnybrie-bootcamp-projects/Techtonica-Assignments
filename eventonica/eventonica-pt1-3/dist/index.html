@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <!-- FONTS -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@300;400;500&family=Lato:ital,wght@0,100;0,400;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- STYLING -->
+    <link rel="stylesheet" href="main.css">
+    
+    <!-- SCRIPTS -->
+    
+    
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventonica Event Board</title>
+</head>
+
+<body>
+    <script src="main.js"></script>
+    <nav>
+        <div id="currentUser"> 
+            <p><i>Logged in as...</i></p>
+            <img class="loggedInAvatar" src="graphics/defaultavatar1.png">
+            
+            <h6 class="navUser">Blue</h6>
+        </div>
+        
+    </nav>
+    
+    <header><h1 class="eventonica">Eventonica</h1> 
+    </header>
+    
+    <main>
+        <!-- EVENT TABLE -->
+        <h2 class="tableTitle">Upcoming Events</h2>
+        <table id="eventTable">
+            
+            <!-- Event List Header -->
+            <thead id="eventListHeader" class="listHeader">
+                <tr>
+                    <th id="th-date"><h3>date</h3></th> <th id="th-description"><h3>event</h3></th> <th id="th-category"><h3>category</h3></th> <th id="th-fave"><h3>♡</h3></th>
+                </tr>
+            </thead>
+            
+            <!-- Events -->
+            <tbody id="eventList">
+                
+                
+            </tbody>
+            
+            <!-- Template Event -->
+            <tfoot id="eventAdd">
+                <tr></tr>
+            </tfoot>
+                    
+        </table>
+        
+        <!-- EVENT ADD FORM -->
+        <h2 class="tableTitle"><button onclick="formToggle()">Add Event</button></h2>
+        <form id="eventSubmission" action="#eventSubmission">
+            <label for="in-eDate">Event Date:</label>
+            <input id="in-eDate" type="datetime-local">
+            <label for="in-eName">Event Name:</label>
+            <input id="in-eName" type="text">
+            <label for="in-eDescription">Event Description:</label>
+            <textarea id="in-eDescription" rows="10" cols="30">Describe your event here.</textarea>
+            <label for="in-eCategory">Event Category:</label>
+            <input id="in-eCategory" type="text">
+            <button id="submitEvent" onclick="EventBoard.getSubmittedEvent()" action="#eventSubmission">Add Event</button>
+        </form>
+                
+    </main>
+    
+    <footer></footer>
+    
+</body>
+<script>
+    function formToggle(){
+        let displayChange = document.getElementById("eventSubmission");
+
+        if (displayChange.style.display == "none") {
+            displayChange.style.display = "grid";
+            } else {
+            displayChange.style.display = "none";
+        }
+    };
+</script>
+</html>

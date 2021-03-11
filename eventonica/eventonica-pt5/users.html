@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <!-- FONTS -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@300;400;500&family=Lato:ital,wght@0,100;0,400;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- STYLING -->
+    <link rel="stylesheet" href="main.css">
+    
+    <!-- SCRIPTS -->
+    <script src="tester.js"></script>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventonica Users</title>
+</head>
+
+<body>
+    <nav>
+        <div id="currentUser"> 
+            <p><i>Logged in as...</i></p>
+            <img class="loggedInAvatar" src="graphics/defaultavatar1.png">
+            
+            <h6 class="navUser">Blue</h6>
+        </div>
+        
+    </nav>
+    
+    <header><h1 class="eventonica">Eventonica</h1> 
+    </header>
+    
+    <main>
+        <h2 class="tableTitle">All Users</h2>
+        <table id="userTable">
+            
+            <!-- Event List Header -->
+            <thead id="userListHeader" class="listHeader">
+                <tr>
+                    <th id="th-userid"><h3>id#</h3></th>
+                    <th id="th-profile"><h3>user</h3></th>
+                    <th id="th-date"><h3>date joined</h3></th>
+                    <th id="th-fave"><h3>favorite events</h3></th>
+                </tr>
+            </thead>
+            
+            <!-- Events -->
+            <tbody id="userList">
+                <!--<template id="EVENT-TEMPLATE">
+                    <tr class="userListItem">
+                        <td class="userid" headers="th-userid">[User id#]</td>
+                        <td class="profile" headers="th-profile">
+                        <profilepic>[Profile Pic Here]</profilepic>
+                        <h2 class="userName">[User Name Here]</h2>
+                        </td>
+                        <td class="date" headers="th-date">[date joined here]</td>
+                        
+                        <td class="faveEvents" headers="th-fave">
+                            <ul class="listOfFaves">
+                                <li>[fave list]</li>
+                            </ul>
+                        </td>
+                    </tr>
+                </template>
+                -->
+                
+                
+            </tbody>
+            
+            <!-- Template Event -->
+            <tfoot id="userAdd">
+                <tr></tr>
+            </tfoot>
+                    
+        </table>
+        
+        
+        <form id="userSubmission" action="#userSubmission">
+            <label for="in-eDate">Event Date:</label>
+            <input id="in-eDate" type="datetime-local">
+            <label for="in-eName">Event Name:</label>
+            <input id="in-eName" type="text">
+            <label for="in-eDescription">Event Description:</label>
+            <textarea id="in-eDescription" rows="10" cols="30">Describe your user here.</textarea>
+            <label for="in-eCategory">Event Category:</label>
+            <input id="in-eCategory" type="text">
+            <button id="submitEvent" onclick="getSubmittedEvent()">Try</button>
+        </form>
+                
+    </main>
+    
+    <footer></footer>
+</body>
+</html>
