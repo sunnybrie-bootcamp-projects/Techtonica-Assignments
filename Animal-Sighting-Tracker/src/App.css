@@ -9,6 +9,26 @@
 }
 
 .sighting {
-  min-height: 5em;
-  color: black;
+  display: grid;
+  min-height: 5vh;
+
+  grid-template-rows: 25% 75%;
+  grid-template-columns: 25% 25% 25% 25%;
+}
+
+.sightingdate {
+  grid-row: 1;
+  grid-column: span 4;
+}
+
+.individuals {
+  display: grid;
+
+  grid-template-rows: auto auto auto;
+  grid-template-columns: auto auto auto auto;
+}
+
+.individuals h3 {
+  grid-row: 1;
+  grid-column: span 4;
 }

@@ -29,7 +29,7 @@ app.post("/sightings", async (req, res) => {
 app.get("/sightings", async (req, res) => {
   try {
     const sightings = await db.any(
-      `SELECT sightings.date_time, sightings.location, sightings.sighter_email, sightings.appeared_healthy, individuals.nickname, species.common_name
+      `SELECT sightings.sighting_id, sightings.date_time, sightings.location, sightings.sighter_email, sightings.appeared_healthy, individuals.nickname, species.common_name
         FROM sightings 
         JOIN individuals
             ON sightings.individual = individuals.id
