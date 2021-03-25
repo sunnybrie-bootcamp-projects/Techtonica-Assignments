@@ -36,7 +36,6 @@ app.post("/sightings", async (req, res) => {
                     .query(myQ, [true])
                     .then((rows) => {
                       //console.log("getID results: ", rows); //TEST
-
                       let str = i === name.length - 1 ? "" : ", ";
 
                       console.log("Making insertion query..."); //TEST

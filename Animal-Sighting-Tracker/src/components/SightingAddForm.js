@@ -17,7 +17,6 @@ function reducer(state, action) {
     case "editName":
       return { ...state, name: action.value };
 
-
     case "editLocation":
       return { ...state, location: action.value };
 
@@ -101,12 +100,12 @@ function SightingAddForm(props) {
                 onChange={(e) => {
                   dispatch({
                     type: "editName",
-                    value: state.name.map((n, i) => {
+                    value: numSeen.map((n, i) => {
                       if (i === index) {
                         return e.target.value;
                       }
 
-                      return n;
+                      return state.name[i];
                     }),
                     index: e.target.index,
                   });
