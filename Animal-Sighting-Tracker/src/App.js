@@ -5,7 +5,7 @@ import SightingsBoard from "./components/SightingsBoard.js";
 
 function App() {
   return (
-    <div className="App" style={{color:"red", backgroundColor:"black"}}>
+    <div className="App">
       <SightingsBoard />
     </div>
   );

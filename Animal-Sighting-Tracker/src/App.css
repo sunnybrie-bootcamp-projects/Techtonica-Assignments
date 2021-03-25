@@ -1,34 +1,309 @@
+/* SCROLLBAR */
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  border-radius:  1rem 1rem 1rem;
+  background: rgba(118, 173, 78, 1);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  border-radius:  1rem 1rem 1rem;
+  background-color: #97DE64;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background-color: #C2E3AB;
+}
+
+/* APP */
 .App {
-  text-align: center;
-  min-height: 500px;
+  padding: 5vh 5vw;
+
+  background-color: #262626;
 }
 
 .SightingsBoard {
   min-height: 490px;
-  background-color: #61dafb;
+  border-radius: 1rem 1rem 1rem;
+
+  background-color: #6D8060;
+  box-shadow: .5em .5em .75em #000;
+
+  text-align: center;
 }
 
+/* SIGHTING ADD FORM */
+.sightingSubmission {
+  display: grid;
+  box-sizing: border-box;
+  min-height: 80%;
+  max-height: 40vh;
+  max-width: 80%;
+  margin: 1em auto;
+  padding: 1em;
+
+  grid-template-rows: auto auto auto;
+  grid-template-columns: 30% auto;
+  grid-gap: .25em;
+
+  justify-content: left;
+
+  border-radius: 1em 1em 1em;
+
+  background-color: #C2E3AB;
+  
+  color: #515E47;
+}
+
+.sightingSubmission h2 {
+  grid-column: 1 / span 2;
+  text-align: center;
+}
+
+.sightingSubmission label{
+  grid-column: 1;
+
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: 700;
+  text-align: right;
+}
+
+.sightingSubmission input{
+  grid-column: 2;
+}
+
+.sightingSubmission button,
+.sightingSubmission #submitSighting{
+  margin: auto;
+  grid-column: 1 / span 2;  
+}
+
+
+/* SIGHTINGS LIST */
 .sighting {
   display: grid;
-  min-height: 5vh;
+  position: relative;
+  box-sizing: border-box;
+  min-height: 100%;
+  max-height: 75vh;
+  max-width: 90%;
+  margin: 1em auto;
+  padding: 1em;
 
-  grid-template-rows: 25% 75%;
-  grid-template-columns: 25% 25% 25% 25%;
+  grid-template-rows: 3em auto  auto;
+  grid-template-columns: 60% 35%;
+  justify-content: space-evenly;
+  grid-gap: .25rem;
+
+  border-radius: 1em 1em 1em;
+
+  background-color: #E3C5C1;
+}
+
+.sighting>div {
+  padding: .125rem;
+
+  border-radius: 1em 1em 1em;
+
+  background-color: #806E6C;
+
+  color: #C2E3AB;
+}
+
+.sighting h3 {
+  margin: auto;
+  padding: 0em;
 }
 
 .sightingdate {
   grid-row: 1;
-  grid-column: span 4;
+  grid-column: span 2;
+}
+
+.location {
+  grid-row: 2;
+  grid-column: 2;
+}
+
+.sighter {
+  grid-row: 3;
+  grid-column: 2;
 }
 
 .individuals {
   display: grid;
+  box-sizing: border-box;
+  position: relative;
+  min-width: 100%;
+  width: auto;
+  height: auto;
+  margin: 0;
+  padding: 0;
 
-  grid-template-rows: auto auto auto;
-  grid-template-columns: auto auto auto auto;
+  grid-row: 2 / span 2;
+  grid-column: 1;
+
+  grid-template-rows: 1.5em auto;
+  grid-template-columns: 100%;
+  justify-content: space-evenly;
+
+  
 }
 
 .individuals h3 {
   grid-row: 1;
-  grid-column: span 4;
+  grid-column: span 3;
+
+  line-height: 1em;
+  padding: .5rem;
+}
+
+.individuals ul{
+  display: grid;
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 100%;
+  height: auto;
+  margin: 0;
+  padding: 0;
+
+  grid-row: 2;
+
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows:  auto auto;
+  grid-gap: .125rem;
+  justify-content: space-evenly;
+  align-content: space-evenly;
+
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  list-style: none;
+}
+
+
+li.ind{
+  display: block;
+  position: relative;
+  box-sizing: border-box;
+  margin: auto;
+  min-width: 100%;
+  height: 5em;
+
+  border-radius:  1rem 1rem 1rem;
+  border-color: #97DE64;
+  border-style: solid;
+  border-width: 1px;
+
+  background-position: center;
+  background-size: cover;
+  filter: drop-shadow(.125em .125em .125em rgba(26, 26, 26, 0.25));
+
+  overflow: hidden;
+  vertical-align: middle;
+
+
+}
+
+.ind:hover .overlay {
+  opacity: 1;
+}
+
+/* INDIVIDUAL OVERLAYS */
+/*
+img.repPhoto {
+  display: block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  max-width: 100%;
+  max-height: 90%;
+  width: auto;
+  height: auto;
+
+  clip-path: circle(40% at 50% 50%);
+}
+*/
+
+.overlay {
+  position: absolute;
+  box-sizing: border-box;
+  min-height: 100%;
+  min-width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  opacity: 0;
+
+
+  transition: .5s ease;
+  background-color: rgba(0, 0, 0, .75);
+
+  border-radius:  1rem 1rem 1rem;
+  overflow: hidden;
+}
+
+
+
+p.info{
+  color: white;
+  font-size: 1rem;
+  position: relative;
+  margin: auto;
+  text-align: center;
+}
+
+/* FONTS/TYPE SETTINGS */
+
+h1 {
+
+  font-family: 'Train One', cursive;
+  font-size: 3em;
+  color: #C2E3AB;
+}
+
+h2 {
+
+  font-family: 'Ubuntu', sans-serif;
+  color: #405E2A;
+}
+
+p {
+  font-family: 'Oxygen', sans-serif;
+}
+
+/* LIST SCROLLBAR */
+/* width */
+.individuals ::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+.individuals ::-webkit-scrollbar-track {
+  border-radius:  1rem 1rem 1rem;
+  background: rgba(118, 173, 78, .25);
+}
+
+/* Handle */
+.individuals ::-webkit-scrollbar-thumb {
+  border-radius:  1rem 1rem 1rem;
+  border-color: #97DE64;
+  border-style: solid;
+  border-width: 1px;
+  background-color: rgba(118, 173, 78, .0);
+}
+
+/* Handle on hover */
+.individuals ::-webkit-scrollbar-thumb:hover {
+  border-color: #C2E3AB;
+  background-color: rgba(118, 173, 78, .0);
 }

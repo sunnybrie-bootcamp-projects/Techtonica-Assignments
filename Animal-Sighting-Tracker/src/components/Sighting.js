@@ -17,25 +17,35 @@ function Sighting(props){
         <div className="sightingdate">
           <p>
             {dateString} {time}
-          </p>
+          </p> 
         </div>
         <div className="individuals">
           <h3>Who:</h3>
+          <ul>
           {props.individuals.map((ind) => {
             return (
-              <p>
-                <div className="nickname">
-                  {ind.nickname}
+              <li
+                className="ind"
+                style={{ backgroundImage: `url(${ind.image_url})` }}
+              >
+                {/*<img className="repPhoto" src={ind.image_url} /> */}
+                <div className="overlay">
+                  <p className="info">
+                    <span className="nickname">{ind.nickname}</span> 
+                    <br />
+                    <span className="speciesCommonName">
+                      {ind.common_name}
+                    </span>{" "}
+                    <br />
+                    <span className="healthstatus">
+                      {ind.appeared_healthy ? `healthy` : `unhealthy`}
+                    </span>
+                  </p>
                 </div>
-                <div className="speciesCommonName">
-                  {ind.common_name}
-                </div>
-                <div className="healthstatus">
-                  {ind.appeared_healthy ? `healthy` : `unhealthy`}
-                </div>
-              </p>
+              </li>
             );
           })}
+          </ul>
         </div>
         <div className="location">
           <h3>At:</h3>
