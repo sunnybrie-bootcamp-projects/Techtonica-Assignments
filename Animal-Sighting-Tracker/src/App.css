@@ -7,32 +7,32 @@
 /* Track */
 ::-webkit-scrollbar-track {
   border-radius:  1rem 1rem 1rem;
-  background: rgba(118, 173, 78, 1);
+  background: #4C592E;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
   border-radius:  1rem 1rem 1rem;
-  background-color: #97DE64;
+  background-color: #545454;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background-color: #C2E3AB;
+  background-color: #F2F2F2;
 }
 
 /* APP */
 .App {
   padding: 5vh 5vw;
 
-  background-color: #262626;
+  background-color: #202426;
 }
 
 .SightingsBoard {
   min-height: 490px;
   border-radius: 1rem 1rem 1rem;
 
-  background-color: #6D8060;
+  background-color: #748C76;
   box-shadow: .5em .5em .75em #000;
 
   text-align: center;
@@ -43,27 +43,45 @@
   display: grid;
   box-sizing: border-box;
   min-height: 80%;
-  max-height: 40vh;
-  max-width: 80%;
+  min-height: 20em;
+  height: 45vh;
+  max-height: 70vh;
+  max-width: 90%;
   margin: 1em auto;
-  padding: 1em;
+  
 
-  grid-template-rows: auto auto auto;
-  grid-template-columns: 30% auto;
-  grid-gap: .25em;
+  grid-template-rows: 1fr 9fr;
+  grid-template-columns: 1fr 2fr;
+  grid-gap: .5em;
 
   justify-content: left;
+  overflow: auto;
 
   border-radius: 1em 1em 1em;
+  border-style: solid;
+  border-width: .25em;
+  border-color:#D9A566;
 
-  background-color: #C2E3AB;
+  background-color: #D1D9C1;
+  box-shadow: .25rem .25rem .75rem rgba(26, 26, 26, .7);
+  color: #A6754B;
+}
+
+.topper {
+  position: relative;
+  box-sizing: border-box;
+  min-width: 100%;
+  margin: 0;
   
-  color: #515E47;
+  grid-column: 1 / span 2;
+  background-color: #D9A566;
 }
 
 .sightingSubmission h2 {
-  grid-column: 1 / span 2;
+  
   text-align: center;
+  font-size: 1.85em;
+  color: floralwhite;
 }
 
 .sightingSubmission label{
@@ -74,8 +92,15 @@
   text-align: right;
 }
 
-.sightingSubmission input{
+.sightingSubmission input,
+#in-Health{
   grid-column: 2;
+
+  margin: auto auto auto 0;
+}
+
+#in-Health input {
+  margin: auto auto auto .5em;
 }
 
 .sightingSubmission button,
@@ -102,8 +127,11 @@
   grid-gap: .25rem;
 
   border-radius: 1em 1em 1em;
+  border-style: solid;
+  border-color: #593622;
+  box-shadow: .25rem .25rem .75rem rgba(26, 26, 26, .7);
 
-  background-color: #E3C5C1;
+  background-color: #A6754B;
 }
 
 .sighting>div {
@@ -111,9 +139,9 @@
 
   border-radius: 1em 1em 1em;
 
-  background-color: #806E6C;
+  background-color: #D9A566;
 
-  color: #C2E3AB;
+  color: floralwhite;
 }
 
 .sighting h3 {
@@ -124,6 +152,11 @@
 .sightingdate {
   grid-row: 1;
   grid-column: span 2;
+
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: 500;
+  font-size: 2.5em;
+  color: floralwhite;
 }
 
 .location {
@@ -161,7 +194,7 @@
   grid-column: span 3;
 
   line-height: 1em;
-  padding: .5rem;
+  padding-bottom: .5em;
 }
 
 .individuals ul{
@@ -169,20 +202,20 @@
   position: relative;
   box-sizing: border-box;
   width: 100%;
-  min-height: 100%;
-  height: auto;
+  height: 1fr;
+  max-height: 30vh;
   margin: 0;
   padding: 0;
 
   grid-row: 2;
 
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows:  auto auto;
-  grid-gap: .125rem;
+  grid-template-rows:  1fr 1fr;
+  grid-gap: .25rem;
   justify-content: space-evenly;
-  align-content: space-evenly;
+  align-content: flex-start;
 
-  overflow-y: auto;
+  overflow-y: scroll;
   overflow-x: hidden;
 
   list-style: none;
@@ -194,11 +227,12 @@ li.ind{
   position: relative;
   box-sizing: border-box;
   margin: auto;
-  min-width: 100%;
-  height: 5em;
+  min-width: 90%;
+  min-height: 100%;
+  height: 9em;
 
   border-radius:  1rem 1rem 1rem;
-  border-color: #97DE64;
+  border-color: #593622;
   border-style: solid;
   border-width: 1px;
 
@@ -207,8 +241,6 @@ li.ind{
   filter: drop-shadow(.125em .125em .125em rgba(26, 26, 26, 0.25));
 
   overflow: hidden;
-  vertical-align: middle;
-
 
 }
 
@@ -264,11 +296,14 @@ p.info{
 
 /* FONTS/TYPE SETTINGS */
 
-h1 {
+.App h1{
+  font-size: 3.5rem;
+}
 
+h1 {
   font-family: 'Train One', cursive;
-  font-size: 3em;
-  color: #C2E3AB;
+  font-size: 2.5rem;
+  color: floralwhite;
 }
 
 h2 {
@@ -283,27 +318,27 @@ p {
 
 /* LIST SCROLLBAR */
 /* width */
-.individuals ::-webkit-scrollbar {
+.SightingsBoard ::-webkit-scrollbar {
   width: 10px;
 }
 
 /* Track */
-.individuals ::-webkit-scrollbar-track {
+.SightingsBoard ::-webkit-scrollbar-track {
   border-radius:  1rem 1rem 1rem;
-  background: rgba(118, 173, 78, .25);
+  background: #D9A566;
 }
 
 /* Handle */
-.individuals ::-webkit-scrollbar-thumb {
+.SightingsBoard ::-webkit-scrollbar-thumb {
   border-radius:  1rem 1rem 1rem;
-  border-color: #97DE64;
+  border-color: #D1D9C1;
   border-style: solid;
   border-width: 1px;
   background-color: rgba(118, 173, 78, .0);
 }
 
 /* Handle on hover */
-.individuals ::-webkit-scrollbar-thumb:hover {
-  border-color: #C2E3AB;
+.SightingsBoard ::-webkit-scrollbar-thumb:hover {
+  border-color: #F2F2F2;
   background-color: rgba(118, 173, 78, .0);
 }

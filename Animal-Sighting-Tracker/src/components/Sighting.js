@@ -15,44 +15,42 @@ function Sighting(props){
     return (
       <div className="sighting">
         <div className="sightingdate">
-          <p>
-            {dateString} {time}
-          </p> 
+          {dateString} {time}
         </div>
         <div className="individuals">
-          <h3>Who:</h3>
+          <h3>Animal(s) Seen</h3>
           <ul>
-          {props.individuals.map((ind) => {
-            return (
-              <li
-                className="ind"
-                style={{ backgroundImage: `url(${ind.image_url})` }}
-              >
-                {/*<img className="repPhoto" src={ind.image_url} /> */}
-                <div className="overlay">
-                  <p className="info">
-                    <span className="nickname">{ind.nickname}</span> 
-                    <br />
-                    <span className="speciesCommonName">
-                      {ind.common_name}
-                    </span>{" "}
-                    <br />
-                    <span className="healthstatus">
-                      {ind.appeared_healthy ? `healthy` : `unhealthy`}
-                    </span>
-                  </p>
-                </div>
-              </li>
-            );
-          })}
+            {props.individuals.map((ind) => {
+              return (
+                <li
+                  className="ind"
+                  style={{ backgroundImage: `url(${ind.image_url})` }}
+                >
+                  {/*<img className="repPhoto" src={ind.image_url} /> */}
+                  <div className="overlay">
+                    <p className="info">
+                      <span className="nickname">{ind.nickname}</span>
+                      <br />
+                      <span className="speciesCommonName">
+                        {ind.common_name}
+                      </span>{" "}
+                      <br />
+                      <span className="healthstatus">
+                        {ind.appeared_healthy ? `healthy` : `unhealthy`}
+                      </span>
+                    </p>
+                  </div>
+                </li>
+              );
+            })}
           </ul>
         </div>
         <div className="location">
-          <h3>At:</h3>
+          <h3>Location of Sighting</h3>
           <p>{props.location}</p>
         </div>
         <div className="sighter">
-          <h3>By:</h3>
+          <h3>Sighted By</h3>
           <p>{props.sighter_email}</p>
         </div>
       </div>

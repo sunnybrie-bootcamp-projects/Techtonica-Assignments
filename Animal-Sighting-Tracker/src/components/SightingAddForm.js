@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 //Empty add form
 const initialState = {
-  name: ["Nickname",],
+  name: ["",],
   appeared_healty: true,
   location: "Location Seen",
   email: "example@mail.com",
@@ -75,7 +75,9 @@ function SightingAddForm(props) {
         action="#sightingSubmission"
         onSubmit={onSubmitForm}
       >
-        <h2 className="tableTitle">Report Sighting</h2>
+        <div className="topper">
+          <h2 className="tableTitle">Report New Sighting</h2>
+        </div>
         <label for="in-Date">Date Seen:</label>
         <input
           id="in-Date"
@@ -114,7 +116,7 @@ function SightingAddForm(props) {
           );
         })}
 
-        <button onClick={() => plusMinus(numSeen.concat(["Nickname"]))}>
+        <button onClick={() => plusMinus(numSeen.concat([""]))}>
           +
         </button>
         {numSeen.length > 1 ? (

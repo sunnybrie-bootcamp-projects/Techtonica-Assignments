@@ -14,56 +14,60 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.post("/sightings", async (req, res) => {
   try {
     const { name, appeared_healthy, location, date, email } = req.body;
-    let latestID = await db.query(`SELECT MAX(sighting_id) FROM sightings;`, [true]);
-    newSightingID = latestID[0].max + 1;
+    
+    //Get new sighting ID
+    const finalQuery = db.query(`SELECT MAX(sighting_id) FROM sightings;`, [true])
+        .then((result) => {
+        let newSightingID = result[0].max + 1;
+        console.log("newSightingID", newSightingID); //TEST
 
-    console.log("newSightingID", newSightingID); //TEST
+        return newSightingID;
+        }) //Now make row insert strings
+        .then((newSightingID) => {
+            //For each individual
+            getFinalPiece = async () => {
+                let stringConcoction = "";
+                
+                for(let i = 0; i < name.length; i++){
+                  let myQ = `SELECT * FROM individuals WHERE nickname = '${name[i]}';`;
 
-    console.log(`NAMES: `, name);
+                  //Get individual ID
+                  let newRow = db
+                    .query(myQ, [true])
+                    .then((rows) => {
+                      //console.log("getID results: ", rows); //TEST
 
-    //Gets individuals' id
-    let getID = async (n)=>{
-        console.log(`Searching for... `, n); //TEST
+                      let str = i === name.length - 1 ? "" : ", ";
 
-        let myQ = `SELECT * FROM individuals WHERE nickname = '${n}';`; 
-        let results = await new Promise((resolve, reject) =>
+                      console.log("Making insertion query..."); //TEST
+                      let insertion = `('${date}', ${rows[0].id}, '${location}', ${appeared_healthy}, '${email}', NOW(), ${newSightingID} )${str}`;
+                      //console.log(insertion); // TEST
+
+                      return insertion;
+                    })
+                    .catch((reason) => {
+                      console.log("Error: ", reason);
+                    });
+
+                  stringConcoction += await newRow;
+                };
+
+                return stringConcoction;
+            };
+
+            return getFinalPiece();
             
-          db.query(
-            myQ,
-            (err, results) => {
-              if (err) {
-                reject(err);
-              } else {
-                resolve(results);
-              }
-            }
-          )
-        );
+        })
+        .then((finalpiece) => {
+            let finalQ = `INSERT INTO sightings(date_time, individual, location, appeared_healthy, sighter_email, record_created, sighting_id) VALUES`;
+            finalQ += finalpiece;
+            finalQ += ` RETURNING *;`;
 
-        //let newInd = await db.query(
-        //    "SELECT id FROM individuals WHERE nickname = $1;", [n]
-        //);
-        let newInd = await results;
-        console.log(`Found... ${newInd[0].id} (${typeof newInd[0].id})`);
-        return await ( newInd[0].id );
-    };
+            console.log("FINAL: ", finalQ);
+            return finalQ;
+        });
 
-    let startStatement = `INSERT INTO sightings(date_time, individual, location, appeared_healthy, sighter_email, record_created, sighting_id) VALUES`;
-
-    let insertStatement = name.map((nickname, index) => {
-        let id = getID(nickname);
-
-        let str = (index === (name.length - 1)) ? ';' : ', ';
-
-        return (`(${date}, ${id}, '${location}', ${appeared_healthy}, '${email}', NOW(), ${newSightingID} )${str}`)
-    });
-
-    insertStatement.unshift(startStatement);
-    insertStatement = insertStatement.join();
-
-    console.log(`QUERY: `, insertStatement);
-
-    const newSighting = await db.query(`$1`, [insertStatement]);
+    const newSighting = await db.query(await finalQuery, [true]);
 
     res.json(newSighting.rows);
   } catch (err) {
@@ -146,7 +150,7 @@ app.get("/sightings", async (req, res) => {
     );
 
     const sightings = await db.any(
-        `SELECT sightings.sighting_id, sightings.date_time, sightings.location, sightings.sighter_email, sightings.appeared_healthy, individuals.nickname, species.common_name, species.image_url
+        `SELECT sightings.sighting_id, sightings.date_time, sightings.location, sightings.sighter_email, sightings.appeared_healthy, individuals.nickname, species.common_name, species.image_url, species.wikipedia_url
         FROM sightings 
         JOIN individuals
             ON sightings.individual = individuals.id
