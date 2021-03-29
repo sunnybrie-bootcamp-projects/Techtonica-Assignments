@@ -1,0 +1,221 @@
+.App {
+  height: 100vh;
+  width: 100vw;
+
+  overflow-x: hidden;
+
+  backdrop-filter: blur(2.5px) grayscale(25%);
+
+  color: #545454;
+}
+
+.softBackground {
+  background-image: url(./graphics/softbackdrop.jpeg);
+  background-size: cover;
+  background-position: center;
+  overflow-x: hidden;
+}
+
+/* ADD CONTACT FORM */
+.contactAddForm{
+  display: block;
+  box-sizing: border-box;
+  position: absolute;
+  float: left;
+  margin: 30vh 25vh;
+  /* width = height * 0.7302321522 */
+  height: 60vh;
+  max-height: 60vh;
+  width: 43.813929132vh;
+
+  background-image: url(./graphics/notebook2.png);
+  background-size: contain;
+  background-position: center;
+  background-attachment: scroll, local;
+  background-repeat: no-repeat;
+}
+
+.contactSubmission {
+  display: grid;
+  position: relative;
+  box-sizing: border-box;
+  margin: 15% auto auto auto;
+  max-width: 90%;
+  max-height: 100%;
+
+  grid-template-columns: 1fr 1fr;
+  grid-row-gap: 1rem;
+  grid-column-gap: .25rem;
+  justify-content: space-evenly;
+}
+
+.contactSubmission .topper,
+.contactSubmission #submitContact{
+  grid-column: 1 / span 2;
+  margin: auto;
+  text-align: center;
+}
+
+.contactSubmission label {
+  grid-column: 1;
+
+  text-align: right;
+}
+
+.contactSubmission input {
+  grid-column: 2;
+}
+
+.topper {
+  font-size: 1.5em;
+}
+/* MAIN CONTACTS */
+table.addressBook {
+  display: block;
+  float: right;
+  margin: 5vh 10vw auto 10vw;
+  padding: 3em 1.5em;
+  /* width = height * 0.68989071038 */
+  width: 62.09016393vh;
+  height: 100vh;
+  max-height: 90vh;
+
+
+  background-image: url(./graphics/notebook.png);
+  background-size: contain;
+  background-position: center;
+  background-attachment: scroll, local;
+  background-repeat: no-repeat;
+
+  justify-content: space-evenly;
+
+  text-align: left;
+}
+
+tbody {
+  display: grid;
+  max-height: 65vh;
+  width: 100%;
+  overflow-y: scroll;
+  justify-content: space-evenly;
+}
+
+thead {
+  display: block;
+  width: 100%;
+  height: 7.5vh;
+  padding-bottom: 1rem;
+}
+
+thead tr{
+  display: grid;
+  width: 100%;
+
+  grid-template-columns: 2fr 2fr 1fr 1fr;
+  grid-gap: .5rem;
+}
+
+.contact {
+  display: grid;
+  width: 100%;
+  line-height: 1em;
+
+  grid-template-columns: 2fr 2fr 1fr 1fr;
+  grid-gap: .25rem;
+  justify-content:space-evenly;
+}
+
+td.name {
+  grid-column: 1;
+
+  text-align: left;
+}
+
+td.phonenumber {
+  grid-column: 2;
+
+  text-align: left;
+}
+
+td.email {
+  grid-column: 3;
+
+  text-align: center;
+}
+
+td.options {
+  grid-column: 4;
+}
+
+tfooter {
+  display: block;
+  height: 10vh;
+  width: 100%;
+  text-align: right;
+  font-size: 2em;
+}
+
+/* TYPE/FONT STYLING */
+
+th {
+  font-size: 1.5em;
+}
+  
+h2,
+h3, 
+label {
+  line-height: 1em;
+  font-size: .75em;
+  font-family: 'Rock Salt', cursive;
+}
+
+h1 {
+  display: block;
+  float: left;
+  margin: auto;
+  padding: .5em;
+  max-width: 50vw;
+  font-size: 4em;
+
+  font-family: 'Rock Salt', cursive;
+  color: floralwhite;
+}
+
+p {
+  font-family: 'Kiwi Maru', serif;
+  font-weight: 500;
+}
+
+button,
+#submitContact {
+  font-family: 'Permanent Marker', cursive;
+}
+
+input {
+  font-family: 'Kiwi Maru', serif;
+}
+
+/* SCROLLBAR */
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  border-radius:  1rem 1rem 1rem;
+  background: rgba(100, 100, 100, 0);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  border-radius:  1rem 1rem 1rem;
+  border-color: #545454;
+  border-style: solid;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  border-color: burlywood;
+}
