@@ -28,7 +28,7 @@ function reducer(state, action) {
   }
 }
 
-//ADD FORM, CHILD OF EVENTBOARD
+//ADD FORM, CHILD OF ADDRESS BOOK
 function ContactAddForm(props) {
   const [state, dispatch] = React.useReducer(reducer, initialState);
 
