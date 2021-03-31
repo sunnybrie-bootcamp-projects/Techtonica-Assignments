@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 //Empty add form
 const initialState = {
-  name: {firstname:"first", lastname: "last"},
+  name: {firstname:"first name", lastname: "last name"},
   phonenumber: "(###)###-####",
   email: "example@mail.com",
 };
@@ -29,7 +29,7 @@ function reducer(state, action) {
 }
 
 //ADD FORM, CHILD OF EVENTBOARD
-function SightingAddForm(props) {
+function ContactAddForm(props) {
   const [state, dispatch] = React.useReducer(reducer, initialState);
 
   const onSubmitForm = async (e) => {
@@ -129,4 +129,4 @@ function SightingAddForm(props) {
   );
 }
 
-export default SightingAddForm;
+export default ContactAddForm;
