@@ -1,0 +1,14 @@
+{
+  "name": "google-cal-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Brie Klassen",
+  "license": "ISC",
+  "dependencies": {
+    "googleapis": "^71.0.0"
+  }
+}

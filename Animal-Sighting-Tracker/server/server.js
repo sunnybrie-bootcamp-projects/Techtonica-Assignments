@@ -12,66 +12,113 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 //post new sighting
 app.post("/sightings", async (req, res) => {
-  try {
+  /*try {
     const { name, appeared_healthy, location, date, email } = req.body;
     
     //Get new sighting ID
-    const finalQuery = db.query(`SELECT MAX(sighting_id) FROM sightings;`, [true])
-        .then((result) => {
-        let newSightingID = result[0].max + 1;
-        console.log("newSightingID", newSightingID); //TEST
+    const results = await db.query(`SELECT MAX(sighting_id) FROM sightings;`, [true]);
+    
+    let newSightingID = results[0].max + 1;
+    console.log("newSightingID", newSightingID); //TEST
 
-        return newSightingID;
-        }) //Now make row insert strings
-        .then((newSightingID) => {
-            //For each individual
-            getFinalPiece = async () => {
-                let stringConcoction = "";
+    
+    //Now make row insert strings
+  
+        //For each individual
+        getFinalPiece = async () => {
+            let stringConcoction = "";
+            
+            for(let i = 0; i < name.length; i++){
+              let myQ = `SELECT * FROM individuals WHERE nickname = '${name[i]}';`;
+
+              //Get individual ID
+              try{ 
+                let rows = await db.query(myQ, [true]);
                 
-                for(let i = 0; i < name.length; i++){
-                  let myQ = `SELECT * FROM individuals WHERE nickname = '${name[i]}';`;
+                //console.log("getID results: ", rows); //TEST
+                let str = i === name.length - 1 ? "" : ", ";
 
-                  //Get individual ID
-                  let newRow = db
-                    .query(myQ, [true])
-                    .then((rows) => {
-                      //console.log("getID results: ", rows); //TEST
-                      let str = i === name.length - 1 ? "" : ", ";
+                console.log("Making insertion query..."); //TEST
+                let insertion = `('${date}', ${rows[0].id}, '${location}', ${appeared_healthy}, '${email}', NOW(), ${newSightingID} )${str}`;
+                //console.log(insertion); // TEST
 
-                      console.log("Making insertion query..."); //TEST
-                      let insertion = `('${date}', ${rows[0].id}, '${location}', ${appeared_healthy}, '${email}', NOW(), ${newSightingID} )${str}`;
-                      //console.log(insertion); // TEST
+                stringConcoction += insertion;
+              }catch(err){
+                console.log("error: ", err.message);
+              }
 
-                      return insertion;
-                    })
-                    .catch((reason) => {
-                      console.log("Error: ", reason);
-                    });
 
-                  stringConcoction += await newRow;
-                };
-
-                return stringConcoction;
             };
 
-            return getFinalPiece();
-            
-        })
-        .then((finalpiece) => {
-            let finalQ = `INSERT INTO sightings(date_time, individual, location, appeared_healthy, sighter_email, record_created, sighting_id) VALUES`;
-            finalQ += finalpiece;
-            finalQ += ` RETURNING *;`;
+            return stringConcoction;
+        };
 
-            console.log("FINAL: ", finalQ);
-            return finalQ;
-        });
+        const finalpiece = await getFinalPiece();
+        
 
-    const newSighting = await db.query(await finalQuery, [true]);
+        let finalQ = `INSERT INTO sightings(date_time, individual, location, appeared_healthy, sighter_email, record_created, sighting_id) VALUES`;
+        finalQ += finalpiece;
+        finalQ += ` RETURNING *;`;
+
+        console.log("FINAL: ", finalQ);
+        const finalQuery = finalQ;
+
+
+    const newSighting = await db.query(finalQuery, [true]);
 
     res.json(newSighting.rows);
   } catch (err) {
     console.error(err.message);
   }
+*/
+
+//REFACTORED VERSION BELOW
+  const { name, appeared_healthy, location, date, email } = req.body;
+
+  //let sightingID = (db.query(`SELECT MAX(sighting_id) FROM sightings;`, [true])[0].max) + 1;
+  let newRows = [];
+
+  //Promise for sighting ID
+  const promisedSightingID = db.query(`SELECT MAX(sighting_id) FROM sightings;`, [true])
+  .then((res) => {
+    console.log(`RECENT SIGHTING ID: ${res[0].max}`);
+    return (res[0].max + 1);
+  })
+  .catch((err) => {
+    console.log(`ERROR on Sighting ID: ${err.message}`);
+  });
+
+  //Array of promises for individual IDs
+  let allID = name.map((i) => {
+    const promisedIndividualID = db.query(`SELECT * FROM individuals WHERE nickname = '${i}'`, [true])
+    .then((res) => {
+      return res[0].id;
+    });
+
+    return promisedIndividualID;
+  });
+
+  allID.unshift(promisedSightingID);
+
+  Promise.all(allID)
+  .then((values) => {
+    console.log(values);
+    if(values.length <= 1){
+      throw new Error(`Not enough IDs`);
+    };
+
+    for(let i = 1; i < values.length; i++){
+      //"INSERT INTO sightings(date_time, individual, location, appeared_healthy, sighter_email, record_created, sighting_id) VALUES"
+      newRows.push(`(${date}, ${values[i]}, ${location}, ${appeared_healthy}, ${email}, NOW(), ${values[0]})`);
+    };
+
+    console.log({newRows});
+  })
+  .catch((err) => {
+    console.log(`ERROR: ${err.message}`);
+  });
+
+  
 });
 
 //gets all sightings
@@ -172,7 +219,7 @@ app.get("/sightings", async (req, res) => {
 //Gets all individuals
 app.get("/individuals", async (req, res) => {
   try {
-    const individuals = await db.any("SELECT * FROM individuals ORDER BY species", [
+    const individuals = await db.any("SELECT * FROM individuals ORDER BY species;", [
       true,
     ]);
   
